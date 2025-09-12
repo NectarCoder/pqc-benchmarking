@@ -13,7 +13,6 @@ NC='\033[0m' # No Color
 echo
 echo -e "${CYAN}Usage examples for RSA key pair generation, CSR generation, self-signed certificate generation, and certificate verification; along with some commands to validate them based on the hashes and certificate content.${NC}"
 
-
 echo
 echo -e "${YELLOW}# Generate a 2048-bit RSA private key:${NC}"
 echo -e "  ${GREEN}./openssl genrsa -out private.key 2048${NC}"
@@ -46,5 +45,34 @@ echo
 echo -e "${YELLOW}# Get the MD5 hash of the certificate's public key modulus:${NC}"
 echo -e "  ${GREEN}./openssl x509 -noout -modulus -in certificate.crt | openssl md5${NC}"
 
+echo;
+
+# Display to the user general Dilithium2 usage example
+echo
+echo -e "${CYAN}Usage examples for Dilithium2 key generation, CSR creation, self-signed certificate generation, and certificate verification using the OQS provider.${NC}"
+
+echo
+echo -e "${YELLOW}# Generate a Dilithium2 private key:${NC}"
+echo -e "  ${GREEN}./openssl genpkey -provider oqs -algorithm dilithium2 -out private_dilithium2.key${NC}"
+
+echo
+echo -e "${YELLOW}# Extract the public key from the Dilithium2 private key:${NC}"
+echo -e "  ${GREEN}./openssl pkey -in private_dilithium2.key -pubout -out public_dilithium2.key${NC}"
+
+echo
+echo -e "${YELLOW}# Generate a Certificate Signing Request (CSR) using Dilithium2:${NC}"
+echo -e "  ${GREEN}./openssl req -new -key private_dilithium2.key -out request_dilithium2.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\"${NC}"
+
+echo
+echo -e "${YELLOW}# Generate a self-signed certificate for Dilithium2:${NC}"
+echo -e "  ${GREEN}./openssl x509 -req -days 365 -in request_dilithium2.csr -signkey private_dilithium2.key -out certificate_dilithium2.crt${NC}"
+
+echo
+echo -e "${YELLOW}# Verify the Dilithium2 certificate:${NC}"
+echo -e "  ${GREEN}./openssl verify -CAfile certificate_dilithium2.crt certificate_dilithium2.crt${NC}"
+
+echo
+echo -e "${YELLOW}# Display the Dilithium2 certificate details:${NC}"
+echo -e "  ${GREEN}./openssl x509 -in certificate_dilithium2.crt -text -noout${NC}"
 
 echo; echo;

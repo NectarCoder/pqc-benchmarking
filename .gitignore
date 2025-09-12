@@ -1,7 +1,10 @@
-
 # OpenSSL generated certs, etc.
 *.crt
 *.csr
 *.pem
 *.der
 *.key
+
+# OQS-Provider cloned repo
+oqs-provider/*
+oqs-provider

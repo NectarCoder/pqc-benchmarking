@@ -4,4 +4,4 @@
 echo -e "\033[1;31mIMPORTANT:\033[0m sudo access is required to install dependencies."
 echo "You may be prompted for your password."
 sudo apt update
-sudo apt install -y build-essential cmake git
+sudo apt install -y build-essential cmake git ninja-build
