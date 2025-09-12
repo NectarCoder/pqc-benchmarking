@@ -33,34 +33,28 @@ In order to provide a comparative baseline, the current 3 standardized schemes [
 
 ## Building & Benchmarking  
 
-This project heavily utilizes OpenSSL, liboqs, and oqs-provider. Before running benchmarks, complete the following prerequisites. Note that at this time, the benchmarking scripts and following setup is designed for an Ubuntu (18-24) environment.  
-It is expected you have `sudo` access on the system you are using.  
+### Prerequisites
 
-1. Install OpenSSL 3.5.2 SEPARATELY from the apt/system-wide OpenSSL  
+This project uses OpenSSL, liboqs, and oqs-provider; these must be setup before running benchmarks.  
+**The following instructions are designed for an <u>Ubuntu (22-24)</u> environment.**  
+
+1. Setup Dependencies  
+From the project root, run [/scripts/install-dependencies.sh](/scripts/install-dependencies.sh):  
 
 ```bash
-# Browse to your preferred directory
-cd ~/Downloads
-
-# Download from the OpenSSL github repo (or if newer version is available, update the URL)
-wget https://github.com/openssl/openssl/releases/download/openssl-3.5.2/openssl-3.5.2.tar.gz
-
-# Extract the tarball and browse into the extracted directory
-tar -xvzf openssl-3.5.2.tar.gz; cd openssl-3.5.2
-
-# Setup OpenSSL build config (installing to /opt/openssl-3.5.2)
-./config --prefix=/opt/openssl-3.5.2 --openssldir=/opt/openssl-3.5.2 shared
-
-# Build and install OpenSSL
-make -j$(nproc) && sudo make install
-
-# Set /opt/openssl path via ldconfig - in order to expose the newer OpenSSL libs
-/opt/openssl-3.5.2/bin/openssl version; sudo ldconfig
-
-# Verify installation
-/opt/openssl-3.5.2/bin/openssl version
-
+./scripts/install-dependencies.sh
 ```
+
+2. Setup OpenSSL with OQS-Provider and liboqs
+From the project root, run [/scripts/install-pqc-openssl.sh](/scripts/install-pqc-openssl.sh):
+
+```bash
+./scripts/install-pqc-openssl.sh
+```
+
+### Benchmarking
+
+
 
 ---
 

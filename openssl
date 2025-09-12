@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Project-local wrapper to run the locally-built OpenSSL inside this repository.
+# Don't move this file away from the repository root.
+# Run it as ./openssl [args...]
+
+# Resolve the repository root (directory of this script)
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+OPENSSL_BIN="$REPO_ROOT/oqs-provider/.local/bin/openssl"
+export OPENSSL_MODULES="$REPO_ROOT/oqs-provider/_build/lib"
+
+if [ -x "$OPENSSL_BIN" ]; then
+  exec "$OPENSSL_BIN" "$@"
+else
+  echo "Error: local OpenSSL not found at: $OPENSSL_BIN" >&2
+  echo "Run the repo setup/build (e.g. scripts/setup-benchmarking-env.sh) to build OpenSSL." >&2
+  exit 2
+fi
