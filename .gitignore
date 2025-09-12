@@ -1,0 +1,7 @@
+
+# OpenSSL generated certs, etc.
+*.crt
+*.csr
+*.pem
+*.der
+*.key

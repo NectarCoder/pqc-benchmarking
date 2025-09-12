@@ -33,8 +33,7 @@ echo "Verifying default (OpenSSL) provider installation..."
 ./../.local/bin/openssl list -providers
 
 # Print completion message
-echo ""; echo ""; echo "***** OQS-PROVIDER, LIBOQS, AND OPENSSL SETUP COMPLETE *****"
-echo "You can now use the local OpenSSL wrapper in the project root (./openssl)."
-echo "Try running the following commands to generate a key, CSR, and a self-signed certificate:"
-
-echo ""; echo ""
+echo; echo; echo "***** OQS-PROVIDER, LIBOQS, AND OPENSSL SETUP COMPLETE *****"
+echo "You can now use the local OpenSSL wrapper from the project root with ./openssl"
+echo "Run ./openssl-help for usage information"
+echo; echo

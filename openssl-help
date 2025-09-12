@@ -1,0 +1,50 @@
+#! /bin/bash
+
+# This is a helper script to display to the user general openssl usage commands
+# We first show the typical RSA process, and then som PQC examples using oqs-provider
+
+# Color variables
+YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
+GREEN='\033[1;32m'
+NC='\033[0m' # No Color
+
+# Display to the user general RSA usage example
+echo
+echo -e "${CYAN}Usage examples for RSA key pair generation, CSR generation, self-signed certificate generation, and certificate verification; along with some commands to validate them based on the hashes and certificate content.${NC}"
+
+
+echo
+echo -e "${YELLOW}# Generate a 2048-bit RSA private key:${NC}"
+echo -e "  ${GREEN}./openssl genrsa -out private.key 2048${NC}"
+
+echo
+echo -e "${YELLOW}# Extract the public key from the private key:${NC}"
+echo -e "  ${GREEN}./openssl rsa -in private.key -pubout -out public.key${NC}"
+
+echo
+echo -e "${YELLOW}# Generate a Certificate Signing Request (CSR):${NC}"
+echo -e "  ${GREEN}./openssl req -new -key private.key -out request.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\"${NC}"
+
+echo
+echo -e "${YELLOW}# Generate a self-signed certificate valid for 365 days:${NC}"
+echo -e "  ${GREEN}./openssl x509 -req -days 365 -in request.csr -signkey private.key -out certificate.crt${NC}"
+
+echo
+echo -e "${YELLOW}# Verify the self-signed certificate:${NC}"
+echo -e "  ${GREEN}./openssl verify -CAfile certificate.crt certificate.crt${NC}"
+
+echo
+echo -e "${YELLOW}# Display the certificate in human-readable form:${NC}"
+echo -e "  ${GREEN}./openssl x509 -in certificate.crt -text -noout${NC}"
+
+echo
+echo -e "${YELLOW}# Get the MD5 hash of the private key's modulus:${NC}"
+echo -e "  ${GREEN}./openssl rsa -noout -modulus -in private.key | openssl md5${NC}"
+
+echo
+echo -e "${YELLOW}# Get the MD5 hash of the certificate's public key modulus:${NC}"
+echo -e "  ${GREEN}./openssl x509 -noout -modulus -in certificate.crt | openssl md5${NC}"
+
+
+echo; echo;
