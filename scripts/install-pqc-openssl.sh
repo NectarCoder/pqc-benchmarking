@@ -4,7 +4,7 @@
 git clone https://github.com/open-quantum-safe/oqs-provider.git
 
 # Run the fullbuild script to setup the benchmarking environment
-echo "***** RUNNING OQS-PROVIDER FULLBUILD SCRIPT *****"
+echo; echo "***** RUNNING OQS-PROVIDER FULLBUILD SCRIPT *****"
 cd oqs-provider
 chmod +x scripts/fullbuild.sh
 OPENSSL_BRANCH=master LIBOQS_BRANCH=main MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -F
@@ -19,20 +19,28 @@ echo "Verifying OpenSSL installation..."
 echo "Verifying liboqs installation..."
 grep '^Version:' ./.local/lib64/pkgconfig/liboqs.pc; echo;
 
-# Set env variable to point to OpenSSL the location of the oqsprovider module
-export OPENSSL_MODULES=$PWD/_build/lib
+# Point OpenSSL to the installed modules directory (contains default provider)
+export OPENSSL_MODULES=$PWD/.local/lib64/ossl-modules
 
-# Check if oqsprovider module exists
+# Ensure oqsprovider module is available in the installed modules directory
 echo "Checking for oqsprovider module..."
-if [ -f $OPENSSL_MODULES/oqsprovider.so ]; then
-    echo "oqsprovider module found."
+if [ -f $PWD/_build/lib/oqsprovider.so ]; then
+    echo "Found built oqsprovider at _build/lib/oqsprovider.so"
+    mkdir -p "$OPENSSL_MODULES"
+    cp -f "$PWD/_build/lib/oqsprovider.so" "$OPENSSL_MODULES/"
 else
-    echo "oqsprovider module not found."
+    echo "oqsprovider not found at _build/lib/oqsprovider.so"
+fi
+
+if [ -f "$OPENSSL_MODULES/oqsprovider.so" ]; then
+    echo "oqsprovider module present in $OPENSSL_MODULES."
+else
+    echo "oqsprovider module not present in $OPENSSL_MODULES."
 fi; echo;
 
 # Verify oqsprovider installation succeeded
 echo "Verifying oqsprovider installation..."
-./.local/bin/openssl list -providers -provider oqsprovider -provider-path $OPENSSL_MODULES
+./.local/bin/openssl list -providers -provider oqsprovider
 echo
 
 echo "Verifying default (OpenSSL) provider installation..."
@@ -41,7 +49,7 @@ echo
 
 # Print completion message
 echo; echo "***** OQS-PROVIDER, LIBOQS, AND OPENSSL SETUP COMPLETE *****"
-echo "***** ENSURE ALL VERIFICATIONS ARE SUCCESSFUL *****"
+echo "***** ENSURE ALL VERIFICATIONS ARE SUCCESSFUL *****"; echo;
 echo "You can now use the local OpenSSL wrapper from the project root with ./openssl"
 echo "Run ./openssl-help for usage information"
 echo; echo

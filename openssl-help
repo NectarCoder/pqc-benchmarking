@@ -37,42 +37,34 @@ echo
 echo -e "${YELLOW}# Display the certificate in human-readable form:${NC}"
 echo -e "  ${GREEN}./openssl x509 -in certificate.crt -text -noout${NC}"
 
-echo
-echo -e "${YELLOW}# Get the MD5 hash of the private key's modulus:${NC}"
-echo -e "  ${GREEN}./openssl rsa -noout -modulus -in private.key | openssl md5${NC}"
+echo; # End of RSA section
 
-echo
-echo -e "${YELLOW}# Get the MD5 hash of the certificate's public key modulus:${NC}"
-echo -e "  ${GREEN}./openssl x509 -noout -modulus -in certificate.crt | openssl md5${NC}"
+# Display to the user PQC usage example with Dilithium (NIST Security Level 2)
 
-echo;
-
-# Display to the user general Dilithium2 usage example
-echo
-echo -e "${CYAN}Usage examples for Dilithium2 key generation, CSR creation, self-signed certificate generation, and certificate verification using the OQS provider.${NC}"
+echo -e "${CYAN}Usage examples for Dilithium key pair generation, CSR generation, self-signed certificate generation, and certificate verification using the oqsprovider; along with some commands to validate them based on the hashes and certificate content.${NC}"
 
 echo
 echo -e "${YELLOW}# Generate a Dilithium2 private key:${NC}"
-echo -e "  ${GREEN}./openssl genpkey -provider oqs -algorithm dilithium2 -out private_dilithium2.key${NC}"
+echo -e "  ${GREEN}./openssl genpkey -provider default -provider oqsprovider -algorithm p256_mldsa44 -out private.key${NC}"
 
 echo
-echo -e "${YELLOW}# Extract the public key from the Dilithium2 private key:${NC}"
-echo -e "  ${GREEN}./openssl pkey -in private_dilithium2.key -pubout -out public_dilithium2.key${NC}"
+echo -e "${YELLOW}# Extract the Dilithium2 public key from the private key:${NC}"
+echo -e "  ${GREEN}./openssl pkey -in private.key -pubout -out public.key -provider default -provider oqsprovider${NC}"
 
 echo
-echo -e "${YELLOW}# Generate a Certificate Signing Request (CSR) using Dilithium2:${NC}"
-echo -e "  ${GREEN}./openssl req -new -key private_dilithium2.key -out request_dilithium2.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\"${NC}"
+echo -e "${YELLOW}# Generate a Certificate Signing Request (CSR):${NC}"
+echo -e "  ${GREEN}./openssl req -new -key private.key -out request.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\" -provider default -provider oqsprovider${NC}"
 
 echo
-echo -e "${YELLOW}# Generate a self-signed certificate for Dilithium2:${NC}"
-echo -e "  ${GREEN}./openssl x509 -req -days 365 -in request_dilithium2.csr -signkey private_dilithium2.key -out certificate_dilithium2.crt${NC}"
+echo -e "${YELLOW}# Generate a self-signed certificate valid for 365 days:${NC}"
+echo -e "  ${GREEN}./openssl x509 -req -days 365 -in request.csr -signkey private.key -out certificate.crt -provider default -provider oqsprovider${NC}"
 
 echo
-echo -e "${YELLOW}# Verify the Dilithium2 certificate:${NC}"
-echo -e "  ${GREEN}./openssl verify -CAfile certificate_dilithium2.crt certificate_dilithium2.crt${NC}"
+echo -e "${YELLOW}# Verify the self-signed certificate:${NC}"
+echo -e "  ${GREEN}./openssl verify -provider default -provider oqsprovider -CAfile certificate.crt certificate.crt${NC}"
 
 echo
-echo -e "${YELLOW}# Display the Dilithium2 certificate details:${NC}"
-echo -e "  ${GREEN}./openssl x509 -in certificate_dilithium2.crt -text -noout${NC}"
+echo -e "${YELLOW}# Display the Dilithium certificate in human-readable form:${NC}"
+echo -e "  ${GREEN}./openssl x509 -in certificate.crt -text -noout -provider default -provider oqsprovider${NC}"
 
-echo; echo;
+echo; # End of Dilithium section

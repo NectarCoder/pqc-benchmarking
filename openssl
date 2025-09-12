@@ -7,7 +7,9 @@
 # Resolve the repository root (directory of this script)
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OPENSSL_BIN="$REPO_ROOT/oqs-provider/.local/bin/openssl"
-export OPENSSL_MODULES="$REPO_ROOT/oqs-provider/_build/lib"
+# Use the installed OpenSSL modules directory so the default provider (with DRBG)
+# is available, and we also copy oqsprovider.so there in the install script.
+export OPENSSL_MODULES="$REPO_ROOT/oqs-provider/.local/lib64/ossl-modules"
 
 if [ -x "$OPENSSL_BIN" ]; then
   exec "$OPENSSL_BIN" "$@"
