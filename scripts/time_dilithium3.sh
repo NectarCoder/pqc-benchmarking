@@ -2,19 +2,23 @@
 
 echo -e "\nTIMING SCRIPT MUST BE RUN FROM PROJECT ROOT, OR OPENSSL WILL NOT WORK!"; echo;
 
-# Create results directory if it doesn't exist
-# - Under results/, create dilithium2_times/ and dilithium2_generated/
-# - Store timing results in dilithium2_times/
-# - Store generated files (keys, csr, certs) in dilithium2_generated/
-mkdir -p results/dilithium2_times/
-mkdir -p results/dilithium2_generated/
-export RESULTS_DIR=results/dilithium2_times/
-export GENERATED_DIR=results/dilithium2_generated/
+# Create results directory if it doesn't exist, or clear it if it does
+# - Store timing results in dilithium3_times/
+# - Store generated files (keys, csr, certs) in dilithium3_generated/
+for dir in results/dilithium3_times results/dilithium3_generated; do
+	if [ -d "$dir" ]; then
+		rm -rf "$dir"/*
+	else
+		mkdir -p "$dir"
+	fi
+done
+export RESULTS_DIR=results/dilithium3_times/
+export GENERATED_DIR=results/dilithium3_generated/
 echo "Results directory is $RESULTS_DIR"
 echo "Generated files directory is $GENERATED_DIR"
 
 # Calculate private key generation time
-(time ./openssl genpkey -provider default -provider oqsprovider -algorithm p256_mldsa44 -out $GENERATED_DIR/private.key) 2>> $RESULTS_DIR/time_private.txt
+(time ./openssl genpkey -provider default -provider oqsprovider -algorithm p384_mldsa65 -out $GENERATED_DIR/private.key) 2>> $RESULTS_DIR/time_private.txt
 
 # Calculate public key extraction time
 (time ./openssl pkey -in $GENERATED_DIR/private.key -pubout -out $GENERATED_DIR/public.key -provider default -provider oqsprovider) 2>> $RESULTS_DIR/time_public.txt
@@ -29,7 +33,7 @@ echo "Generated files directory is $GENERATED_DIR"
 (time ./openssl x509 -in $GENERATED_DIR/certificate.crt -text -noout -provider default -provider oqsprovider) 2>> $RESULTS_DIR/time_verify.txt
 
 # Echo current security level to a file
-echo "NIST_Security_Level, 2" >> $RESULTS_DIR/nist_level.txt
+echo "NIST_Security_Level, 3" >> $RESULTS_DIR/nist_level.txt
 
 # Unset the results directory variable
 unset RESULTS_DIR

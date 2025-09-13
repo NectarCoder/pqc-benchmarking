@@ -2,12 +2,16 @@
 
 echo -e "\nTIMING SCRIPT MUST BE RUN FROM PROJECT ROOT, OR OPENSSL WILL NOT WORK!"; echo;
 
-# Create results directory if it doesn't exist
-# - Under results/, create dilithium5_times/ and dilithium5_generated/
+# Create results directory if it doesn't exist, or clear it if it does
 # - Store timing results in dilithium5_times/
 # - Store generated files (keys, csr, certs) in dilithium5_generated/
-mkdir -p results/dilithium5_times/
-mkdir -p results/dilithium5_generated/
+for dir in results/dilithium5_times results/dilithium5_generated; do
+	if [ -d "$dir" ]; then
+		rm -rf "$dir"/*
+	else
+		mkdir -p "$dir"
+	fi
+done
 export RESULTS_DIR=results/dilithium5_times/
 export GENERATED_DIR=results/dilithium5_generated/
 echo "Results directory is $RESULTS_DIR"
