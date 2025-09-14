@@ -5,10 +5,6 @@
 *.der
 *.key
 
-# OQS-Provider cloned repo
-oqs-provider/*
-oqs-provider/
-
 # Timing data
 results/*
 results/

@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# Clone oqs-provider repo
-git clone https://github.com/open-quantum-safe/oqs-provider.git
+# Init oqs-provider submodule
+git pull
+git submodule update --init --recursive
 
 # Run the fullbuild script to setup the benchmarking environment
 echo; echo "***** RUNNING OQS-PROVIDER FULLBUILD SCRIPT *****"
 cd oqs-provider
 chmod +x scripts/fullbuild.sh
-OPENSSL_BRANCH=master LIBOQS_BRANCH=main MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -F
+OPENSSL_BRANCH=openssl-3.5 LIBOQS_BRANCH=ds-0.14.0-release MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -F
+# OPENSSL_BRANCH=master LIBOQS_BRANCH=main MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -F
 echo; echo; echo "***** OQS-PROVIDER FULLBUILD SCRIPT COMPLETE *****"
 echo "***** VERIFY THAT NO ERRORS HAVE OCCURRED *****"; echo; echo;
 
