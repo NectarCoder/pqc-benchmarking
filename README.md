@@ -174,17 +174,32 @@ This project uses OpenSSL, liboqs, and oqs-provider; these must be setup before 
 **The following instructions are designed for an <u>Ubuntu (22-24)</u> environment.**  
 
 1. Setup Dependencies  
-From the project root, run [/scripts/install-dependencies.sh](/scripts/install-dependencies.sh):  
+From the project root, run [scripts/install_dependencies.sh](/scripts/install_dependencies.sh):  
 
 ```bash
-./scripts/install-dependencies.sh
+./scripts/install_dependencies.sh
 ```
 
-2. Setup OpenSSL with OQS-Provider and liboqs
-From the project root, run [/scripts/install-pqc-openssl.sh](/scripts/install-pqc-openssl.sh):
+2. Set perf permissions
+To able to count CPU cycles, the system perf paranoia level needs to be set to 1 or lower.  
+From the project root, run [scripts/set_perf_level.sh](/scripts/set_perf_level.sh) (This will set the level to 1): 
 
 ```bash
-./scripts/install-pqc-openssl.sh
+./scripts/set_perf_level.sh
+```
+
+Since this is a general security risk, you may want to revert this change after benchmarking.  
+Run the following command to revert:  
+
+```bash
+./scripts/reset_perf_level.sh
+```
+
+3. Setup OpenSSL with OQS-Provider and liboqs
+From the project root, run [scripts/install_pqc_openssl.sh](/scripts/install_pqc_openssl.sh):
+
+```bash
+./scripts/install_pqc_openssl.sh
 ```
 
 ### Benchmarking
