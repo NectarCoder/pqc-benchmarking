@@ -31,7 +31,7 @@ In order to provide a comparative baseline, the current 3 standardized schemes [
 
 ### What are the benchmarks?  
 
-The benchmarks focus on measuring the performance of each algorithm in terms of key generation, request, signing, and verification times.  
+The benchmarks focus on measuring the performance of each algorithm version in terms of key generation, request, signing, and verification times.  
 For each metric, we respectively note the algorithm version and the NIST security level (1, 2, 3, 4, 5) [^5].
 In general, the objective is to find:  
 
@@ -52,11 +52,12 @@ In general, the objective is to find:
     - CSR generation
     - Certificate signing
     - Certificate verification (in KB)
-- File sizes of:
-    - Private key
-    - Public key
-    - CSR
-    - Self-signed certificate (in bytes)
+
+We also note the following details per algorithm version:
+- NIST Security Level
+- Public Key Size (in bytes)
+- Private Key Size (in bytes)
+- Signature Size (in bytes)
 
 More technically, we define the metrics listed below:  
 
@@ -91,10 +92,6 @@ More technically, we define the metrics listed below:
 - **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>verifying the self-signed certificate</u>
 - **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>generating key pair (generating private key + extracting public key)</u>
 - **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>ALL operations combined</u>
-- **File size** *(in bytes)* of the <u>private key</u>
-- **File size** *(in bytes)* of the <u>public key</u>
-- **File size** *(in bytes)* of the <u>CSR</u>
-- **File size** *(in bytes)* of the <u>self-signed certificate</u>  
 
 </details>
 
@@ -159,10 +156,6 @@ Based on these metrics, the actual benchmarks are calculated ***(over 1000 attem
 - **Median Peak RSS** for <u>verifying the self-signed certificate</u>
 - **Median Peak RSS** for <u>generating key pair (generating private key + extracting public key)</u>
 - **Median Peak RSS** for <u>ALL operations combined</u>
-- **Average file size** of the <u>private key</u>
-- **Average file size** of the <u>public key</u>
-- **Average file size** of the <u>CSR</u>
-- **Average file size** of the <u>self-signed certificate</u>
 
 </details>
 
