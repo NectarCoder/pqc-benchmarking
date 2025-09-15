@@ -11,3 +11,6 @@ results/
 
 # Python cache files
 __pycache__/
+
+# Benchmarking csvs
+*.csv
