@@ -37,13 +37,11 @@ In general, the objective is to find:
 
 - Time taken to:
     - Generate a private & public key pair
-    - Extract public key from the private key
     - Generate Certificate Signing Request (CSR)
     - Sign the CSR and generate a self-signed certificate
     - Verify the self-signed certificate (in milliseconds)
 - CPU cycles taken to:
     - Generate a private & public key pair
-    - Extract public key from the private key
     - Generate Certificate Signing Request (CSR)
     - Sign the CSR and generate a self-signed certificate
     - Verify the self-signed certificate (in CPU cycles)
@@ -66,34 +64,22 @@ More technically, we define the metrics listed below:
 <details>
 <summary>Click to expand: Full List of Metrics</summary>
 
-- **User & kernel time** *(total CPU time, in milliseconds)* for <u>generating the private key</u>
-- **User & kernel time** *(total CPU time, in milliseconds)* for <u>extracting the public key from the private key</u>
+- **User & kernel time** *(total CPU time, in milliseconds)* for <u>generating the private/public keypair</u>
 - **User & kernel time** *(total CPU time, in milliseconds)* for <u>generating the CSR</u>
 - **User & kernel time** *(total CPU time, in milliseconds)* for <u>signing CSR & generate a self-signed certificate</u>
 - **User & kernel time** *(total CPU time, in milliseconds)* for <u>verifying the self-signed certificate</u>
-- **User & kernel time** *(total CPU time, in milliseconds)* for <u>generating key pair (generating private key + extracting public key)</u>
-- **User & kernel time** *(total CPU time, in milliseconds)* for <u>ALL operations combined</u>
-- **Real time** *(wall-clock time, in milliseconds)* for <u>generating the private key</u>
-- **Real time** *(wall-clock time, in milliseconds)* for <u>extracting the public key from the private key</u>
+- **Real time** *(wall-clock time, in milliseconds)* for <u>generating the private/public keypair</u>
 - **Real time** *(wall-clock time, in milliseconds)* for <u>generating the CSR</u>
 - **Real time** *(wall-clock time, in milliseconds)* for <u>signing CSR & generating a self-signed certificate</u>
 - **Real time** *(wall-clock time, in milliseconds)* for <u>verifying the self-signed certificate</u>
-- **Real time** *(wall-clock time, in milliseconds)* for <u>generating key pair (generating private key + extracting public key)</u>
-- **Real time** *(wall-clock time, in milliseconds)* for <u>ALL operations combined</u>
-- **CPU Cycles** for <u>generating the private key</u>
-- **CPU Cycles** for <u>extracting the public key from the private key</u>
+- **CPU Cycles** for <u>generating the private/public keypair</u>
 - **CPU Cycles** for <u>generating the CSR</u>
 - **CPU Cycles** for <u>signing CSR & generating a self-signed certificate</u>
 - **CPU Cycles** for <u>verifying the self-signed certificate</u>
-- **CPU Cycles** for <u>generating key pair (generating private key + extracting public key)</u>
-- **CPU Cycles** for <u>ALL operations combined</u>
-- **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>generating the private key</u>
-- **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>extracting the public key from the private key</u>
+- **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>generating the private/public keypair</u>
 - **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>generating the CSR</u>
 - **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>signing CSR & generating a self-signed certificate</u>
 - **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>verifying the self-signed certificate</u>
-- **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>generating key pair (generating private key + extracting public key)</u>
-- **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>ALL operations combined</u>
 
 </details>
 
@@ -102,62 +88,38 @@ Based on these metrics, the actual benchmarks are calculated ***(over 1000 attem
 <details>
 <summary>Click to expand: Full List of Benchmarks</summary>
 
-- **Average CPU time** for <u>generating the private key</u>
-- **Average CPU time** for <u>extracting the public key from the private key</u>
+- **Average CPU time** for <u>generating the private/public keypair</u>
 - **Average CPU time** for <u>generating the CSR</u>
 - **Average CPU time** for <u>signing CSR & generating a self-signed certificate</u>
 - **Average CPU time** for <u>verifying the self-signed certificate</u>
-- **Average CPU time** for <u>generating key pair (generating private key + extracting public key)</u>
-- **Average CPU time** for <u>ALL operations combined</u>
-- **Average wall-clock time** for <u>generating the private key</u>
-- **Average wall-clock time** for <u>extracting the public key from the private key</u>
+- **Average wall-clock time** for <u>generating the private/public keypair</u>
 - **Average wall-clock time** for <u>generating the CSR</u>
 - **Average wall-clock time** for <u>signing CSR & generating a self-signed certificate</u>
 - **Average wall-clock time** for <u>verifying the self-signed certificate</u>
-- **Average wall-clock time** for <u>generating key pair (generating private key + extracting public key)</u>
-- **Average wall-clock time** for <u>ALL operations combined</u>
-- **Median CPU time** for <u>generating the private key</u>
-- **Median CPU time** for <u>extracting the public key from the private key</u>
+- **Median CPU time** for <u>generating the private/public keypair</u>
 - **Median CPU time** for <u>generating the CSR</u>
 - **Median CPU time** for <u>signing CSR & generating a self-signed certificate</u>
 - **Median CPU time** for <u>verifying the self-signed certificate</u>
-- **Median CPU time** for <u>generating key pair (generating private key + extracting public key)</u>
-- **Median CPU time** for <u>ALL operations combined</u>
-- **Median wall-clock time** for <u>generating the private key</u>
-- **Median wall-clock time** for <u>extracting the public key from the private key</u>
+- **Median wall-clock time** for <u>generating the private/public keypair</u>
 - **Median wall-clock time** for <u>generating the CSR</u>
 - **Median wall-clock time** for <u>signing CSR & generating a self-signed certificate</u>
 - **Median wall-clock time** for <u>verifying the self-signed certificate</u>
-- **Median wall-clock time** for <u>generating key pair (generating private key + extracting public key)</u>
-- **Median wall-clock time** for <u>ALL operations combined</u>
-- **Average CPU Cycles** for <u>generating the private key</u>
-- **Average CPU Cycles** for <u>extracting the public key from the private key</u>
+- **Average CPU Cycles** for <u>generating the private/public keypair</u>
 - **Average CPU Cycles** for <u>generating the CSR</u>
 - **Average CPU Cycles** for <u>signing CSR & generating a self-signed certificate</u>
 - **Average CPU Cycles** for <u>verifying the self-signed certificate</u>
-- **Average CPU Cycles** for <u>generating key pair (generating private key + extracting public key)</u>
-- **Average CPU Cycles** for <u>ALL operations combined</u>
-- **Median CPU Cycles** for <u>generating the private key</u>
-- **Median CPU Cycles** for <u>extracting the public key from the private key</u>
+- **Median CPU Cycles** for <u>generating the private/public keypair</u>
 - **Median CPU Cycles** for <u>generating the CSR</u>
 - **Median CPU Cycles** for <u>signing CSR & generating a self-signed certificate</u>
 - **Median CPU Cycles** for <u>verifying the self-signed certificate</u>
-- **Median CPU Cycles** for <u>generating key pair (generating private key + extracting public key)</u>
-- **Median CPU Cycles** for <u>ALL operations combined</u>
-- **Average Peak RSS** for <u>generating the private key</u>
-- **Average Peak RSS** for <u>extracting the public key from the private key</u>
+- **Average Peak RSS** for <u>generating the private/public keypair</u>
 - **Average Peak RSS** for <u>generating the CSR</u>
 - **Average Peak RSS** for <u>signing CSR & generating a self-signed certificate</u>
 - **Average Peak RSS** for <u>verifying the self-signed certificate</u>
-- **Average Peak RSS** for <u>generating key pair (generating private key + extracting public key)</u>
-- **Average Peak RSS** for <u>ALL operations combined</u>
-- **Median Peak RSS** for <u>generating the private key</u>
-- **Median Peak RSS** for <u>extracting the public key from the private key</u>
+- **Median Peak RSS** for <u>generating the private/public keypair</u>
 - **Median Peak RSS** for <u>generating the CSR</u>
 - **Median Peak RSS** for <u>signing CSR & generating a self-signed certificate</u>
 - **Median Peak RSS** for <u>verifying the self-signed certificate</u>
-- **Median Peak RSS** for <u>generating key pair (generating private key + extracting public key)</u>
-- **Median Peak RSS** for <u>ALL operations combined</u>
 
 </details>
 
@@ -176,7 +138,7 @@ From the project root, run [scripts/install_dependencies.sh](/scripts/install_de
 ```
 
 2. Set perf permissions
-To able to count CPU cycles, the system perf paranoia level needs to be set to 1 or lower.  
+To be able to count CPU cycles, the system perf paranoia level needs to be set to 1 or lower.  
 From the project root, run [scripts/set_perf_level.sh](/scripts/set_perf_level.sh) (This will set the level to 1): 
 
 ```bash
