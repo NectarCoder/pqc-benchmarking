@@ -19,7 +19,7 @@ if [ -z "${TIMING_RESULTS_DIR:-}" ] || [ -z "${MEMORY_RESULTS_DIR:-}" ] || [ -z 
     exit 2
 fi
 
-echo -e "\nSCRIPT MUST BE RUN FROM PROJECT ROOT, OR OPENSSL WILL NOT WORK!"; echo;
+# echo -e "\nSCRIPT MUST BE RUN FROM PROJECT ROOT, OR OPENSSL WILL NOT WORK!"; echo;
 
 # Prepare directories
 for dir in "$TIMING_RESULTS_DIR" "$MEMORY_RESULTS_DIR" "$GENERATED_DIR"; do

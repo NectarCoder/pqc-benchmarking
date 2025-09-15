@@ -68,3 +68,4 @@ def init_benchmarks_csv(out_csv=None):
     # Write the header to benchmarks.csv
     with open(out_csv, 'w', newline='') as f:
         csv.writer(f).writerow(header)
+

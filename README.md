@@ -161,7 +161,12 @@ From the project root, run [scripts/install_pqc_openssl.sh](/scripts/install_pqc
 
 ### Benchmarking
 
-**TODO**
+Once all prerequisites are met, you can run the benchmarks Python script like so:
+
+```bash
+# From the project root:
+./run_benchmarks.py
+```
 
 ---
 
