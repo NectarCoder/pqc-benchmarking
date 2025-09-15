@@ -62,7 +62,7 @@ def extract_memory_metrics(content):
 def get_all_metrics(prefix):
     """
     Given a prefix, returns a tuple of lists: (cert_metrics, csr_metrics, private_metrics, public_metrics, verify_metrics)
-    Each list contains [cpu_cycles, real_time, user_time, system_time] for the respective timing file.
+    Each list contains [cpu_cycles, real_time, cpu_time, and memrss] for the respective file.
     Returns None for any file that could not be processed.
     """
     timing_dir = os.path.join("results", f"{prefix}_times")

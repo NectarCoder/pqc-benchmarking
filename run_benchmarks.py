@@ -25,7 +25,7 @@ if __name__ == "__main__":
     med_keypair, med_csr, med_cert, med_verify = calculate_medians(prefix, runs=20)
 
     # Add results to CSV
-    add_benchmark_row(out_csv, [
+    """add_benchmark_row(out_csv, [
         'rsa',
         'RSA 2048',
         5,
@@ -40,7 +40,7 @@ if __name__ == "__main__":
         *med_csr,
         *med_cert,
         *med_verify
-    ])
+    ])"""
 
     # Print to console
     print("\n\033[92mRSA 2048 Benchmarking Complete. See metrics below:\033[0m")

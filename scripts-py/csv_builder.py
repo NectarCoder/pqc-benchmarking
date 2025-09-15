@@ -50,9 +50,13 @@ def init_benchmarks_csv(out_csv=None):
         'Median Peak RSS for Certificate Verification (Memory Usage)'
     ]
 
+    # Ensure the parent directory exists
+    base_dir = os.path.dirname(out_csv)
+    if base_dir and not os.path.exists(base_dir):
+        os.makedirs(base_dir, exist_ok=True)
+
     # If benchmarks.csv exists, rename it to benchmarks_old.csv or benchmarks_old_N.csv
     if os.path.exists(out_csv):
-        base_dir = os.path.dirname(out_csv)
         old_csv = os.path.join(base_dir, 'benchmarks_old.csv')
         if not os.path.exists(old_csv):
             os.rename(out_csv, old_csv)
@@ -69,3 +73,5 @@ def init_benchmarks_csv(out_csv=None):
     with open(out_csv, 'w', newline='') as f:
         csv.writer(f).writerow(header)
 
+def add_benchmark_row():
+    pass
