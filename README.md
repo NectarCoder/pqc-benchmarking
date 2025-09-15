@@ -54,6 +54,8 @@ In general, the objective is to find:
     - Certificate verification (in KB)
 
 We also note the following details per algorithm version:
+- Algorithm ID (e.g. p256_mldsa44 = Dilithium/ML-DSA NIST Level 2, combined with p256 ECDSA)
+- Algorithm Name (e.g. ML-DSA/Dilithium)
 - NIST Security Level
 - Public Key Size (in bytes)
 - Private Key Size (in bytes)

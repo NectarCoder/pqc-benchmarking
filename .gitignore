@@ -8,3 +8,6 @@
 # Timing data
 results/*
 results/
+
+# Python cache files
+__pycache__/
