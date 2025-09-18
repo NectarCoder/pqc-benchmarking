@@ -6,11 +6,11 @@ export MEMORY_RESULTS_DIR=results/dilithium2_memory
 export GENERATED_DIR=results/dilithium2_generated
 
 # Commands used to generate keys, CSRs, and certificates using OpenSSL
-export GEN_CMD="./openssl genpkey -provider default -provider oqsprovider -algorithm p256_mldsa44 -out $GENERATED_DIR/private.key"
-export PUB_CMD="./openssl pkey -in $GENERATED_DIR/private.key -pubout -out $GENERATED_DIR/public.key -provider default -provider oqsprovider"
-export CSR_CMD="./openssl req -new -key $GENERATED_DIR/private.key -out $GENERATED_DIR/request.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\" -provider default -provider oqsprovider"
-export SIGN_CMD="./openssl x509 -req -days 365 -in $GENERATED_DIR/request.csr -signkey $GENERATED_DIR/private.key -out $GENERATED_DIR/certificate.crt -provider default -provider oqsprovider"
-export VERIFY_CMD="./openssl x509 -in $GENERATED_DIR/certificate.crt -text -noout -provider default -provider oqsprovider"
+export GEN_CMD="./openssl genpkey -algorithm mldsa44 -out $GENERATED_DIR/private.key"
+export PUB_CMD="./openssl pkey -in $GENERATED_DIR/private.key -pubout -out $GENERATED_DIR/public.key"
+export CSR_CMD="./openssl req -new -key $GENERATED_DIR/private.key -out $GENERATED_DIR/request.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\""
+export SIGN_CMD="./openssl x509 -req -days 365 -in $GENERATED_DIR/request.csr -signkey $GENERATED_DIR/private.key -out $GENERATED_DIR/certificate.crt"
+export VERIFY_CMD="./openssl x509 -in $GENERATED_DIR/certificate.crt -text -noout"
 
 # Call the metrics calculation script
 exec "$(dirname "$0")/record_metrics.sh"

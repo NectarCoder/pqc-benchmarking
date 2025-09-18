@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# Warn user that script must be run from the project root
+echo -e "WARNING: THIS SCRIPT MUST BE RUN FROM THE PROJECT ROOT DIRECTORY"
+
 # Init oqs-provider submodule
 git pull
+rm -rf oqs-provider; git clone https://github.com/open-quantum-safe/oqs-provider.git
 git submodule update --init --recursive
 
 # Run the fullbuild script to setup the benchmarking environment

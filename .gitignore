@@ -4,6 +4,7 @@
 *.pem
 *.der
 *.key
+*.bin
 
 # Timing data
 results/*

@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     # Run benchmarks for each algorithm
     # Arguments: (output_csv, prefix, [algorithm id, algorithm name, NIST security level, private key size, public key size, signature size])
-    run_benchmark(out_csv, 'rsa',        ['rsa',        'RSA 2048',    'N/A','1704','451','2048'])
-    run_benchmark(out_csv, 'dilithium2', ['p256_mldsa44','Dilithium2', '2','5502','1950','2420'])
-    run_benchmark(out_csv, 'dilithium3', ['p384_mldsa65','Dilithium3', '3','8423','2860','3309'])
-    run_benchmark(out_csv, 'dilithium5', ['p384_mldsa65','Dilithium5', '5','10536','3774','4627'])
+    run_benchmark(out_csv, 'rsa',        ['rsa', 'RSA 2048', 'N/A','1704','451','2048'])
+    run_benchmark(out_csv, 'dilithium2', ['mldsa44','Dilithium2', '2','2626','1334','2420'])
+    run_benchmark(out_csv, 'dilithium3', ['mldsa65','Dilithium3', '3','4098','1974','3309'])
+    run_benchmark(out_csv, 'dilithium5', ['mldsa87','Dilithium5', '5','4962','2614','4627'])
