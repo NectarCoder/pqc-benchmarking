@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import subprocess
 import sys
 import os
 import statistics
@@ -39,7 +40,8 @@ def calculate_averages(prefix, runs=1):
             "scripts",
             f"measure_{prefix}.sh",
         )
-        os.system(f'bash "{script_path}"')
+        # os.system(f'bash "{script_path}"')
+        subprocess.run(["bash", script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
 
         # Get metrics
         # Each returned list is [cpu_cycles, real_time, user_time, system_time, memrss]
@@ -179,7 +181,8 @@ def calculate_medians(prefix, runs=1):
             "scripts",
             f"measure_{prefix}.sh",
         )
-        os.system(f'bash "{script_path}"')
+        # os.system(f'bash "{script_path}"')
+        subprocess.run(["bash", script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
         cert_metrics, csr_metrics, private_metrics, public_metrics, verify_metrics = (
             get_all_metrics(prefix)
         )

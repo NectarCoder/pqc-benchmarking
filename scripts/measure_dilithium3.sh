@@ -10,7 +10,7 @@ export GEN_CMD="./openssl genpkey -algorithm mldsa65 -out $GENERATED_DIR/private
 export PUB_CMD="./openssl pkey -in $GENERATED_DIR/private.key -pubout -out $GENERATED_DIR/public.key"
 export CSR_CMD="./openssl req -new -key $GENERATED_DIR/private.key -out $GENERATED_DIR/request.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\""
 export SIGN_CMD="./openssl x509 -req -days 365 -in $GENERATED_DIR/request.csr -signkey $GENERATED_DIR/private.key -out $GENERATED_DIR/certificate.crt"
-export VERIFY_CMD="./openssl x509 -in $GENERATED_DIR/certificate.crt -text -noout"
+export VERIFY_CMD="./openssl verify -CAfile $GENERATED_DIR/certificate.crt $GENERATED_DIR/certificate.crt"
 
 # Call the metrics calculation script
 exec "$(dirname "$0")/record_metrics.sh"
