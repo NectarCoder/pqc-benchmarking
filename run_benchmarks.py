@@ -7,6 +7,27 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'scripts-py'))
 from csv_builder import init_benchmarks_csv, add_benchmarks  # type: ignore
 from calculate_averages import calculate_averages, calculate_medians  # type: ignore
 
+def run_benchmark(out_csv, prefix, static_items, runs=5):
+    print(f"\n\033[93mBenchmarking {static_items[1]}...\033[0m")
+    avg_kp, avg_csr, avg_cert, avg_ver = calculate_averages(prefix, runs=runs)
+    med_kp, med_csr, med_cert, med_ver = calculate_medians(prefix, runs=runs)
+    add_benchmarks(
+        out_csv,
+        static_items,
+        [avg_kp, avg_csr, avg_cert, avg_ver],
+        [med_kp, med_csr, med_cert, med_ver]
+    )
+    print(f"\n\033[92m{static_items[1]} Benchmarking Complete. See metrics below:\033[0m")
+    print("Metrics Order: [CPU Cycles, Real time, CPU time, Memory/Peak RSS]")
+    for label, avg, med in [
+        ("Keypair", avg_kp, med_kp),
+        ("CSR",     avg_csr, med_csr),
+        ("Cert",    avg_cert, med_cert),
+        ("Verify",  avg_ver, med_ver),
+    ]:
+        print(f"{static_items[1]} Average {label} Metrics: {avg}")
+        print(f"{static_items[1]} Median  {label} Metrics: {med}")
+
 if __name__ == "__main__":
 
     # Set path for benchmarks file.
@@ -18,110 +39,9 @@ if __name__ == "__main__":
     """ BENCHMARKING PROCESS BEGINS """
     print("\n\033[92mStarting benchmarking process...\033[0m")
 
-    # Benchmark RSA
-    print("\n\033[93mBenchmarking RSA 2048...\033[0m")
-
-    prefix = 'rsa'
-    avg_keypair, avg_csr, avg_cert, avg_verify = calculate_averages(prefix, runs=20)
-    med_keypair, med_csr, med_cert, med_verify = calculate_medians(prefix, runs=20)
-
-    # First list static metadata, then avg metrics and med metrics grouped by metric type
-    static_items = ['rsa', 'RSA 2048', 'todo', 'todo', 'todo', 'todo']
-    avg_items = [avg_keypair, avg_csr, avg_cert, avg_verify]
-    med_items = [med_keypair, med_csr, med_cert, med_verify]
-
-    # Add results to CSV in a new row
-    add_benchmarks(out_csv, static_items, avg_items, med_items)
-    
-    # Print to console
-    print("\n\033[92mRSA 2048 Benchmarking Complete. See metrics below:\033[0m")
-    print(f"Metrics Order: [CPU Cycles, Real time, CPU time, Memory/Peak RSS]")
-    print(f"RSA Average Keypair Metrics: {avg_keypair}")
-    print(f"RSA Average CSR Metrics: {avg_csr}")
-    print(f"RSA Average Cert Metrics: {avg_cert}")
-    print(f"RSA Average Verify Metrics: {avg_verify}")
-    print(f"RSA Median Keypair Metrics: {med_keypair}")
-    print(f"RSA Median CSR Metrics: {med_csr}")
-    print(f"RSA Median Cert Metrics: {med_cert}")
-    print(f"RSA Median Verify Metrics: {med_verify}")
-
-    # Benchmark Dilithium2
-    print("\n\033[93mBenchmarking Dilithium2...\033[0m")
-
-    prefix = 'dilithium2'
-    avg_keypair, avg_csr, avg_cert, avg_verify = calculate_averages(prefix, runs=20)
-    med_keypair, med_csr, med_cert, med_verify = calculate_medians(prefix, runs=20)
-
-    # First list static metadata, then avg metrics and med metrics grouped by metric type
-    static_items = ['p256_mldsa44', 'Dilithium2', 'todo', 'todo', 'todo', 'todo',]
-    avg_items = [avg_keypair, avg_csr, avg_cert, avg_verify]
-    med_items = [med_keypair, med_csr, med_cert, med_verify]
-
-    # Add results to CSV in a new row
-    add_benchmarks(out_csv, static_items, avg_items, med_items)
-    
-    # Print to console
-    print("\n\033[92mDilithium2 Benchmarking Complete. See metrics below:\033[0m")
-    print(f"Metrics Order: [CPU Cycles, Real time, CPU time, Memory/Peak RSS]")
-    print(f"Dilithium2 Average Keypair Metrics: {avg_keypair}")
-    print(f"Dilithium2 Average CSR Metrics: {avg_csr}")
-    print(f"Dilithium2 Average Cert Metrics: {avg_cert}")
-    print(f"Dilithium2 Average Verify Metrics: {avg_verify}")
-    print(f"Dilithium2 Median Keypair Metrics: {med_keypair}")
-    print(f"Dilithium2 Median CSR Metrics: {med_csr}")
-    print(f"Dilithium2 Median Cert Metrics: {med_cert}")
-    print(f"Dilithium2 Median Verify Metrics: {med_verify}")
-
-    # Benchmark Dilithium3
-    print("\n\033[93mBenchmarking Dilithium3...\033[0m")
-
-    prefix = 'dilithium3'
-    avg_keypair, avg_csr, avg_cert, avg_verify = calculate_averages(prefix, runs=20)
-    med_keypair, med_csr, med_cert, med_verify = calculate_medians(prefix, runs=20)
-
-    # First list static metadata, then avg metrics and med metrics grouped by metric type
-    static_items = ['p384_mldsa65', 'Dilithium3', 'todo', 'todo', 'todo', 'todo',]
-    avg_items = [avg_keypair, avg_csr, avg_cert, avg_verify]
-    med_items = [med_keypair, med_csr, med_cert, med_verify]
-
-    # Add results to CSV in a new row
-    add_benchmarks(out_csv, static_items, avg_items, med_items)
-    
-    # Print to console
-    print("\n\033[92mDilithium3 Benchmarking Complete. See metrics below:\033[0m")
-    print(f"Metrics Order: [CPU Cycles, Real time, CPU time, Memory/Peak RSS]")
-    print(f"Dilithium3 Average Keypair Metrics: {avg_keypair}")
-    print(f"Dilithium3 Average CSR Metrics: {avg_csr}")
-    print(f"Dilithium3 Average Cert Metrics: {avg_cert}")
-    print(f"Dilithium3 Average Verify Metrics: {avg_verify}")
-    print(f"Dilithium3 Median Keypair Metrics: {med_keypair}")
-    print(f"Dilithium3 Median CSR Metrics: {med_csr}")
-    print(f"Dilithium3 Median Cert Metrics: {med_cert}")
-    print(f"Dilithium3 Median Verify Metrics: {med_verify}")
-
-    # Benchmark Dilithium5
-    print("\n\033[93mBenchmarking Dilithium5...\033[0m")
-
-    prefix = 'dilithium5'
-    avg_keypair, avg_csr, avg_cert, avg_verify = calculate_averages(prefix, runs=20)
-    med_keypair, med_csr, med_cert, med_verify = calculate_medians(prefix, runs=20)
-
-    # First list static metadata, then avg metrics and med metrics grouped by metric type
-    static_items = ['p384_mldsa65', 'Dilithium5', 'todo', 'todo', 'todo', 'todo',]
-    avg_items = [avg_keypair, avg_csr, avg_cert, avg_verify]
-    med_items = [med_keypair, med_csr, med_cert, med_verify]
-
-    # Add results to CSV in a new row
-    add_benchmarks(out_csv, static_items, avg_items, med_items)
-    
-    # Print to console
-    print("\n\033[92mDilithium5 Benchmarking Complete. See metrics below:\033[0m")
-    print(f"Metrics Order: [CPU Cycles, Real time, CPU time, Memory/Peak RSS]")
-    print(f"Dilithium5 Average Keypair Metrics: {avg_keypair}")
-    print(f"Dilithium5 Average CSR Metrics: {avg_csr}")
-    print(f"Dilithium5 Average Cert Metrics: {avg_cert}")
-    print(f"Dilithium5 Average Verify Metrics: {avg_verify}")
-    print(f"Dilithium5 Median Keypair Metrics: {med_keypair}")
-    print(f"Dilithium5 Median CSR Metrics: {med_csr}")
-    print(f"Dilithium5 Median Cert Metrics: {med_cert}")
-    print(f"Dilithium5 Median Verify Metrics: {med_verify}")
+    # Run benchmarks for each algorithm
+    # Arguments: (output_csv, prefix, [algorithm id, algorithm name, NIST security level, private key size, public key size, signature size])
+    run_benchmark(out_csv, 'rsa',        ['rsa',        'RSA 2048',    'N/A','1704','451','2048'])
+    run_benchmark(out_csv, 'dilithium2', ['p256_mldsa44','Dilithium2', '2','5502','1950','2420'])
+    run_benchmark(out_csv, 'dilithium3', ['p384_mldsa65','Dilithium3', '3','8423','2860','3309'])
+    run_benchmark(out_csv, 'dilithium5', ['p384_mldsa65','Dilithium5', '5','10536','3774','4627'])

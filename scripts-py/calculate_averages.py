@@ -111,6 +111,27 @@ def calculate_averages(prefix, runs=1):
         ver_mem = int(verify_metrics[4])
         avg_verify[3] += (ver_mem - avg_verify[3]) / (i + 1)
 
+    # For CPU cycles and memrss, convert to int for final output
+    avg_keypair[0] = int(avg_keypair[0])
+    avg_keypair[3] = int(avg_keypair[3])
+    avg_csr[0]     = int(avg_csr[0])
+    avg_csr[3]     = int(avg_csr[3])
+    avg_cert[0]    = int(avg_cert[0])
+    avg_cert[3]    = int(avg_cert[3])
+    avg_verify[0]  = int(avg_verify[0])
+    avg_verify[3]  = int(avg_verify[3])
+
+    # Convert real_time and cpu_time to milliseconds (from seconds)
+    avg_keypair[1] *= 1000.0
+    avg_keypair[2] *= 1000.0
+    avg_csr[1]     *= 1000.0
+    avg_csr[2]     *= 1000.0
+    avg_cert[1]    *= 1000.0
+    avg_cert[2]    *= 1000.0
+    avg_verify[1]  *= 1000.0
+    avg_verify[2]  *= 1000.0
+
+    # Return the averages
     return avg_keypair, avg_csr, avg_cert, avg_verify
 
 
@@ -225,4 +246,25 @@ def calculate_medians(prefix, runs=1):
         statistics.median(verify_mem),
     ]
 
+    # For CPU cycles and memrss, convert to int for final output
+    med_keypair[0] = int(med_keypair[0])
+    med_keypair[3] = int(med_keypair[3])
+    med_csr[0]     = int(med_csr[0])
+    med_csr[3]     = int(med_csr[3])
+    med_cert[0]    = int(med_cert[0])
+    med_cert[3]    = int(med_cert[3])
+    med_verify[0]  = int(med_verify[0])
+    med_verify[3]  = int(med_verify[3])
+
+    # Convert real_time and cpu_time to milliseconds (from seconds)
+    med_keypair[1] *= 1000.0
+    med_keypair[2] *= 1000.0
+    med_csr[1]     *= 1000.0
+    med_csr[2]     *= 1000.0
+    med_cert[1]    *= 1000.0
+    med_cert[2]    *= 1000.0
+    med_verify[1]  *= 1000.0
+    med_verify[2]  *= 1000.0
+
+    # Return the medians
     return med_keypair, med_csr, med_cert, med_verify
