@@ -46,21 +46,21 @@ echo -e "\nAnalyzing key: ${BOLD}${BLUE}${PRIVATE_KEY_FILE}${NORMAL}\n"
 
 # Check Private Key Size
 echo "--- 🔐 Private Key ---"
-priv_key_bytes=$(./openssl pkey -in "$PRIVATE_KEY_FILE" -outform DER | wc -c)
+priv_key_bytes=$(./openssl pkey -in "$PRIVATE_KEY_FILE" -provider default -provider oqsprovider -outform DER | wc -c)
 echo "Size: ${BOLD}$priv_key_bytes bytes${NORMAL}"
 echo
 
 # Check Public Key Size
 echo "--- 🔑 Public Key ---"
-./openssl pkey -in "$PRIVATE_KEY_FILE" -pubout -out "$PUBLIC_KEY_FILE" 2>/dev/null
-pub_key_bytes=$(./openssl pkey -pubin -in "$PUBLIC_KEY_FILE" -outform DER | wc -c)
+./openssl pkey -in "$PRIVATE_KEY_FILE" -provider default -provider oqsprovider -pubout -out "$PUBLIC_KEY_FILE" 2>/dev/null
+pub_key_bytes=$(./openssl pkey -pubin -in "$PUBLIC_KEY_FILE" -provider default -provider oqsprovider -outform DER | wc -c)
 echo "Size: ${BOLD}$pub_key_bytes bytes${NORMAL}"
 echo
 
 # Check Signature Size
 echo "--- ✍️ Signature ---"
 echo "This is a test message." > "$MESSAGE_FILE"
-./openssl pkeyutl -sign -inkey "$PRIVATE_KEY_FILE" -in "$MESSAGE_FILE" -out "$SIGNATURE_FILE" 2>/dev/null
+./openssl pkeyutl -sign -inkey "$PRIVATE_KEY_FILE" -in "$MESSAGE_FILE" -provider default -provider oqsprovider -out "$SIGNATURE_FILE" 2>/dev/null
 # ./openssl dgst -sha256 -sign "$PRIVATE_KEY_FILE" -out "$SIGNATURE_FILE" "$MESSAGE_FILE" 2>/dev/null
 sig_bytes=$(wc -c < "$SIGNATURE_FILE")
 echo "Size: ${BOLD}$sig_bytes bytes${NORMAL}"

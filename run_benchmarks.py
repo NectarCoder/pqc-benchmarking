@@ -57,3 +57,5 @@ if __name__ == "__main__":
     run_benchmark(out_csv, 'sphincsshake3f', ['slh-dsa-shake-192f','SPHINCS+ SHAKE 192f', '3','116','66','35664'])
     run_benchmark(out_csv, 'sphincsshake5s', ['slh-dsa-shake-256s','SPHINCS+ SHAKE 256s', '5','150','82','29792'])
     run_benchmark(out_csv, 'sphincsshake5f', ['slh-dsa-shake-256f','SPHINCS+ SHAKE 256f', '5','150','82','49856'])
+    run_benchmark(out_csv, 'falcon512', ['falcon512','Falcon 512','1','2202','915','657'])
+    run_benchmark(out_csv, 'falcon1024', ['falcon1024','Falcon 1024','5','4122','1811','1267'])

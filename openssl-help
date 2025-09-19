@@ -9,6 +9,9 @@ CYAN='\033[1;36m'
 GREEN='\033[1;32m'
 NC='\033[0m' # No Color
 
+echo; echo -e "This help command provides examples of using OpenSSL for key generation, CSR creation, certificate signing, and verification \nfor both traditional RSA and post-quantum algorithms like Dilithium and Falcon."
+echo "RSA & Dilithium use standard OpenSSL commands, while Falcon requires the oqs-provider."
+
 echo -e "\n${CYAN}Usage examples for RSA 2048 key pair generation, CSR generation, self-signed certificate generation, and certificate verification.${NC}"
 echo -e "${YELLOW}# Generate a 2048-bit RSA private key:${NC}\n  ${GREEN}./openssl genrsa -out private.key 2048${NC}"
 echo -e "${YELLOW}# Extract the public key from the private key:${NC}\n  ${GREEN}./openssl rsa -in private.key -pubout -out public.key${NC}"
@@ -24,3 +27,11 @@ echo -e "${YELLOW}# Generate a Certificate Signing Request (CSR):${NC}\n  ${GREE
 echo -e "${YELLOW}# Generate a self-signed certificate valid for 365 days:${NC}\n  ${GREEN}./openssl x509 -req -days 365 -in request.csr -signkey private.key -out certificate.crt${NC}"
 echo -e "${YELLOW}# Verify the self-signed certificate:${NC}\n  ${GREEN}./openssl verify -CAfile certificate.crt certificate.crt${NC}"
 echo -e "${YELLOW}# Display the Dilithium certificate in human-readable form:${NC}\n  ${GREEN}./openssl x509 -in certificate.crt -text -noout${NC}"
+
+echo; echo -e "${CYAN}Usage examples for Falcon/falcon512 key pair generation, CSR generation, self-signed certificate generation, and certificate verification via oqs-provider.${NC}"
+echo -e "${YELLOW}# Generate a Falcon512 private key:${NC}\n  ${GREEN}./openssl genpkey -algorithm falcon512 -out private.key -provider default -provider oqsprovider${NC}"
+echo -e "${YELLOW}# Extract the Falcon512 public key from the private key:${NC}\n  ${GREEN}./openssl pkey -in private.key -pubout -out public.key -provider default -provider oqsprovider${NC}"
+echo -e "${YELLOW}# Generate a Certificate Signing Request (CSR):${NC}\n  ${GREEN}./openssl req -new -key private.key -out request.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\" -provider default -provider oqsprovider${NC}"
+echo -e "${YELLOW}# Generate a self-signed certificate valid for 365 days:${NC}\n  ${GREEN}./openssl x509 -req -days 365 -in request.csr -signkey private.key -out certificate.crt -provider default -provider oqsprovider${NC}"
+echo -e "${YELLOW}# Verify the self-signed certificate:${NC}\n  ${GREEN}./openssl verify -provider default -provider oqsprovider -CAfile certificate.crt certificate.crt${NC}"
+echo -e "${YELLOW}# Display the Falcon512 certificate in human-readable form:${NC}\n  ${GREEN}./openssl x509 -in certificate.crt -text -noout -provider default -provider oqsprovider${NC}"
