@@ -128,7 +128,7 @@ Based on these metrics, the actual benchmarks are calculated ***(over 1000 attem
 ### Prerequisites
 
 This project uses OpenSSL, liboqs, and oqs-provider; these must be setup before running benchmarks.  
-**The following instructions are designed for an <u>Ubuntu (22-24)</u> environment.**  
+**The following instructions are designed for a <u>Bash shell environment on Ubuntu (22-24)</u>.**  
 
 1. Setup Dependencies  
 From the project root, run [scripts/install_dependencies.sh](/scripts/install_dependencies.sh):  

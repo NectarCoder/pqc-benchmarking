@@ -15,3 +15,6 @@ __pycache__/
 
 # Benchmarking csvs
 *.csv
+
+# Local stuff
+listsigs

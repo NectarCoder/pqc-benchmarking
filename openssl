@@ -15,6 +15,6 @@ if [ -x "$OPENSSL_BIN" ]; then
   exec "$OPENSSL_BIN" "$@"
 else
   echo "Error: local OpenSSL not found at: $OPENSSL_BIN" >&2
-  echo "Run the repo setup/build (e.g. scripts/setup-benchmarking-env.sh) to build OpenSSL." >&2
+  echo "Run the repo setup/build (e.g. scripts/install_pqc_openssl.sh) to build OpenSSL." >&2
   exit 2
 fi
