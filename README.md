@@ -134,6 +134,7 @@ This project uses OpenSSL, liboqs, and oqs-provider; these must be setup before 
 From the project root, run [scripts/install_dependencies.sh](/scripts/install_dependencies.sh):  
 
 ```bash
+# sudo access is required
 ./scripts/install_dependencies.sh
 ```
 
@@ -142,6 +143,7 @@ To be able to count CPU cycles, the system perf paranoia level needs to be set t
 From the project root, run [scripts/set_perf_level.sh](/scripts/set_perf_level.sh) (This will set the level to 1): 
 
 ```bash
+# sudo access is required
 ./scripts/set_perf_level.sh
 ```
 
@@ -149,6 +151,7 @@ Since this is a general security risk, you may want to revert this change after 
 Run the following command to revert:  
 
 ```bash
+# sudo access is required
 ./scripts/reset_perf_level.sh
 ```
 
@@ -161,11 +164,26 @@ From the project root, run [scripts/install_pqc_openssl.sh](/scripts/install_pqc
 
 ### Benchmarking
 
-Once all prerequisites are met, you can run the benchmarks Python script like so:
+Once all prerequisites are met, you can run the benchmarks Python script like so:  
 
 ```bash
 # From the project root:
 ./run_benchmarks.py
+```
+
+Once benchmarks are complete, results will be available in `results/benchmarks.csv`.  
+
+You can clean all built files with:  
+
+```bash
+# From the project root:
+./clean --apply
+
+# Usage: ./clean (--dry-run|--apply) [-oqs]
+# Options:
+#   --dry-run   List what would be removed (no deletions)
+#   --apply     Perform removals
+#   -oqs        Also remove top-level oqs-provider directory (disabled by default)
 ```
 
 ---
