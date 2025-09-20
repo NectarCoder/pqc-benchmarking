@@ -1,0 +1,41 @@
+#!/usr/bin/bash
+
+# This is a helper script to display to the user general openssl usage commands
+# We first show the typical RSA process, and then some PQC examples
+
+# Color variables
+DARK_YELLOW='\033[0;33m'
+DARK_CYAN='\033[0;36m'
+DARK_GREEN='\033[0;32m'
+DARK_RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+echo
+echo -e "${DARK_RED}This help command provides examples of using OpenSSL for key generation, CSR creation, certificate signing, and verification\nfor both traditional RSA and post-quantum algorithms like Dilithium and Falcon.${NC}"
+echo -e "${DARK_RED}RSA & Dilithium use standard OpenSSL commands, while Falcon requires the oqs-provider.${NC}"
+
+echo -e "\n${DARK_CYAN}Usage examples for RSA 2048 key pair generation, CSR generation, self-signed certificate generation, and certificate verification.${NC}"
+echo -e "${DARK_YELLOW}# Generate a 2048-bit RSA private key:${NC}\n  ${DARK_GREEN}./openssl genrsa -out private.key 2048${NC}"
+echo -e "${DARK_YELLOW}# Extract the public key from the private key:${NC}\n  ${DARK_GREEN}./openssl rsa -in private.key -pubout -out public.key${NC}"
+echo -e "${DARK_YELLOW}# Generate a Certificate Signing Request (CSR):${NC}\n  ${DARK_GREEN}./openssl req -new -key private.key -out request.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\"${NC}"
+echo -e "${DARK_YELLOW}# Generate a self-signed certificate valid for 365 days:${NC}\n  ${DARK_GREEN}./openssl x509 -req -days 365 -in request.csr -signkey private.key -out certificate.crt${NC}"
+echo -e "${DARK_YELLOW}# Verify the self-signed certificate:${NC}\n  ${DARK_GREEN}./openssl verify -CAfile certificate.crt certificate.crt${NC}"
+echo -e "${DARK_YELLOW}# Display the certificate in human-readable form:${NC}\n  ${DARK_GREEN}./openssl x509 -in certificate.crt -text -noout${NC}"
+
+echo; echo -e "${DARK_CYAN}Usage examples for Dilithium/mldsa44 key pair generation, CSR generation, self-signed certificate generation, and certificate verification.${NC}"
+echo -e "${DARK_YELLOW}# Generate a Dilithium2 private key:${NC}\n  ${DARK_GREEN}./openssl genpkey -algorithm mldsa44 -out private.key${NC}"
+echo -e "${DARK_YELLOW}# Extract the Dilithium2 public key from the private key:${NC}\n  ${DARK_GREEN}./openssl pkey -in private.key -pubout -out public.key${NC}"
+echo -e "${DARK_YELLOW}# Generate a Certificate Signing Request (CSR):${NC}\n  ${DARK_GREEN}./openssl req -new -key private.key -out request.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\"${NC}"
+echo -e "${DARK_YELLOW}# Generate a self-signed certificate valid for 365 days:${NC}\n  ${DARK_GREEN}./openssl x509 -req -days 365 -in request.csr -signkey private.key -out certificate.crt${NC}"
+echo -e "${DARK_YELLOW}# Verify the self-signed certificate:${NC}\n  ${DARK_GREEN}./openssl verify -CAfile certificate.crt certificate.crt${NC}"
+echo -e "${DARK_YELLOW}# Display the Dilithium certificate in human-readable form:${NC}\n  ${DARK_GREEN}./openssl x509 -in certificate.crt -text -noout${NC}"
+
+echo; echo -e "${DARK_CYAN}Usage examples for Falcon/falcon512 key pair generation, CSR generation, self-signed certificate generation, and certificate verification via oqs-provider.${NC}"
+echo -e "${DARK_YELLOW}# Generate a Falcon512 private key:${NC}\n  ${DARK_GREEN}./openssl genpkey -algorithm falcon512 -out private.key -provider default -provider oqsprovider${NC}"
+echo -e "${DARK_YELLOW}# Extract the Falcon512 public key from the private key:${NC}\n  ${DARK_GREEN}./openssl pkey -in private.key -pubout -out public.key -provider default -provider oqsprovider${NC}"
+echo -e "${DARK_YELLOW}# Generate a Certificate Signing Request (CSR):${NC}\n  ${DARK_GREEN}./openssl req -new -key private.key -out request.csr -subj \"/C=US/ST=Georgia/L=Atlanta/O=My Company Inc/CN=mycompany.com\" -provider default -provider oqsprovider${NC}"
+echo -e "${DARK_YELLOW}# Generate a self-signed certificate valid for 365 days:${NC}\n  ${DARK_GREEN}./openssl x509 -req -days 365 -in request.csr -signkey private.key -out certificate.crt -provider default -provider oqsprovider${NC}"
+echo -e "${DARK_YELLOW}# Verify the self-signed certificate:${NC}\n  ${DARK_GREEN}./openssl verify -provider default -provider oqsprovider -CAfile certificate.crt certificate.crt${NC}"
+echo -e "${DARK_YELLOW}# Display the Falcon512 certificate in human-readable form:${NC}\n  ${DARK_GREEN}./openssl x509 -in certificate.crt -text -noout -provider default -provider oqsprovider${NC}"
+
+echo;

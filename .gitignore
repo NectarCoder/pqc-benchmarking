@@ -1,0 +1,20 @@
+# OpenSSL generated certs, etc.
+*.crt
+*.csr
+*.pem
+*.der
+*.key
+*.bin
+
+# Timing data
+results/*
+results/
+
+# Python cache files
+__pycache__/
+
+# Benchmarking csvs
+*.csv
+
+# Local stuff
+listsigs

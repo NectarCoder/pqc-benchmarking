@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Simple project cleaner
+# Removes project-level build artefacts:
+# - any __pycache__ folders under the project
+# - the top-level `results` directory
+#
+# Pass -oqs to also remove the top-level `oqs-provider` directory.
+
+# The script requires a mandatory mode flag: either --dry-run or --apply.
+# Examples:
+#   ./clean --dry-run            # list what would be removed (default behavior)
+#   ./clean --apply              # actually perform removals
+
+
+usage() {
+	cat <<EOF
+Usage: $0 (--dry-run|--apply) [-oqs]
+
+Options:
+  --dry-run   List what would be removed (no deletions)
+  --apply     Perform removals
+  -oqs        Also remove top-level oqs-provider directory (disabled by default)
+EOF
+}
+
+REMOVE_OQS=0
+MODE=""
+
+while [[ ${#} -gt 0 ]]; do
+	case "$1" in
+		-h|--help)
+			usage
+			exit 0
+			;;
+		--dry-run)
+			MODE="dry"
+			shift
+			;;
+		--apply)
+			MODE="apply"
+			shift
+			;;
+		-oqs)
+			REMOVE_OQS=1
+			shift
+			;;
+		*)
+			echo "Unknown argument: $1" >&2
+			usage
+			exit 2
+			;;
+	esac
+done
+
+if [[ -z "$MODE" ]]; then
+	echo "Missing required mode: please pass either --dry-run or --apply" >&2
+	usage
+	exit 2
+fi
+
+DRY_RUN=1
+if [[ "$MODE" == "apply" ]]; then
+	DRY_RUN=0
+fi
+
+ROOT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+echo "Project root: $ROOT_DIR"
+
+run_or_echo() {
+	if [[ "$DRY_RUN" != "0" && "$DRY_RUN" != "false" ]]; then
+		echo "DRY RUN: $*"
+	else
+		echo "RUN: $*"
+		eval "$@"
+	fi
+}
+
+# 1) find and remove all __pycache__ directories, excluding inside oqs-provider unless requested
+echo "Searching for __pycache__ directories (excluding oqs-provider unless -oqs specified)..."
+
+if [[ "$REMOVE_OQS" -eq 1 ]]; then
+	# include whole tree
+	mapfile -t pyc_dirs < <(find "$ROOT_DIR" -type d -name '__pycache__')
+else
+	# exclude oqs-provider subtree
+	mapfile -t pyc_dirs < <(find "$ROOT_DIR" -path "$ROOT_DIR/oqs-provider" -prune -o -type d -name '__pycache__' -print)
+fi
+
+if [[ ${#pyc_dirs[@]} -eq 0 ]]; then
+	echo "No __pycache__ directories found."
+else
+	for d in "${pyc_dirs[@]}"; do
+		run_or_echo rm -rf "${d}"
+	done
+fi
+
+# 2) remove top-level results directory if it exists (only project-level)
+RESULTS_DIR="$ROOT_DIR/results"
+if [[ -d "$RESULTS_DIR" ]]; then
+	run_or_echo rm -rf "$RESULTS_DIR"
+else
+	echo "Top-level results directory not found: $RESULTS_DIR"
+fi
+
+# 3) optionally remove oqs-provider
+OQS_DIR="$ROOT_DIR/oqs-provider"
+if [[ "$REMOVE_OQS" -eq 1 ]]; then
+	if [[ -d "$OQS_DIR" ]]; then
+		run_or_echo rm -rf "$OQS_DIR"
+	else
+		echo "oqs-provider not found at: $OQS_DIR"
+	fi
+else
+	echo "oqs-provider not removed (pass -oqs to remove it)."
+fi
+
+echo "Clean script finished."
+
+
+
