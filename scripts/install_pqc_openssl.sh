@@ -1,11 +1,10 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Warn user that script must be run from the project root
 echo -e "WARNING: THIS SCRIPT MUST BE RUN FROM THE PROJECT ROOT DIRECTORY"
 
 # Init oqs-provider repo
-rm -rf oqs-provider; git fetch --all --tags;
-git clone --branch 0.10.0 https://github.com/open-quantum-safe/oqs-provider.git
+rm -rf oqs-provider; git clone --branch 0.10.0 https://github.com/open-quantum-safe/oqs-provider.git
 
 # Enable all algorithms (copy over modified generate.py)
 cd oqs-provider/oqs-template

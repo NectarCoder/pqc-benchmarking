@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'scripts-py'))
 from csv_builder import init_benchmarks_csv, add_benchmarks  # type: ignore
 from calculate_averages import calculate_averages, calculate_medians  # type: ignore
 
-def run_benchmark(out_csv, prefix, static_items, runs=10):
+def run_benchmark(out_csv, prefix, static_items, runs=1):
     print(f"\n\033[93mBenchmarking {static_items[1]}...\033[0m")
     avg_kp, avg_csr, avg_cert, avg_ver = calculate_averages(prefix, runs=runs)
     med_kp, med_csr, med_cert, med_ver = calculate_medians(prefix, runs=runs)

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Sets the perf_event_paranoid level to 1 to allow user-level access.
 

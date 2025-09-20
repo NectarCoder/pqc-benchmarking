@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # This is a helper script to display to the user general openssl usage commands
 # We first show the typical RSA process, and then some PQC examples

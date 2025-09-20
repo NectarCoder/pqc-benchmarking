@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Specify results and generated directories
 export TIMING_RESULTS_DIR=results/sphincsshake3f_times
@@ -13,4 +13,4 @@ export SIGN_CMD="./openssl x509 -req -days 365 -in $GENERATED_DIR/request.csr -s
 export VERIFY_CMD="./openssl verify -CAfile $GENERATED_DIR/certificate.crt $GENERATED_DIR/certificate.crt"
 
 # Call the metrics calculation script
-exec "$(dirname "$0")/record_metrics.sh"
+"$(dirname "$0")/record_metrics.sh"

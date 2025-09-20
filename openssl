@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Project-local wrapper to run the locally-built OpenSSL inside this repository.
 # Don't move this file away from the repository root.

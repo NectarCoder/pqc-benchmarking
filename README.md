@@ -76,10 +76,10 @@ More technically, we define the metrics listed below:
 - **CPU Cycles** for <u>generating the CSR</u>
 - **CPU Cycles** for <u>signing CSR & generating a self-signed certificate</u>
 - **CPU Cycles** for <u>verifying the self-signed certificate</u>
-- **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>generating the private/public keypair</u>
-- **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>generating the CSR</u>
-- **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>signing CSR & generating a self-signed certificate</u>
-- **Maximum memory usage/Peak RSS (Resident Settings Size)** *(in KB)* for <u>verifying the self-signed certificate</u>
+- **Maximum memory usage/Peak RSS (Resident Set Size)** *(in KB)* for <u>generating the private/public keypair</u>
+- **Maximum memory usage/Peak RSS (Resident Set Size)** *(in KB)* for <u>generating the CSR</u>
+- **Maximum memory usage/Peak RSS (Resident Set Size)** *(in KB)* for <u>signing CSR & generating a self-signed certificate</u>
+- **Maximum memory usage/Peak RSS (Resident Set Size)** *(in KB)* for <u>verifying the self-signed certificate</u>
 
 </details>
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Generic timing and memory recording helper for PQC benchmarking scripts.
 
@@ -71,6 +71,7 @@ run_memory "$SIGN_CMD" mem_cert.txt
 run_memory "$VERIFY_CMD" mem_verify.txt
 
 # Cleanup exported vars (if caller exported them)
+unset TIMING_RESULTS_DIR
 unset MEMORY_RESULTS_DIR
 unset GENERATED_DIR
 unset GEN_CMD

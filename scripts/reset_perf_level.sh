@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Reverts the perf_event_paranoid setting to the system default (Level 4 on Ubuntu 24+).
 

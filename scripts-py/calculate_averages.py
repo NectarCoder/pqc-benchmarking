@@ -5,7 +5,8 @@ import sys
 import os
 import statistics
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "scripts-py"))
+#sys.path.insert(0, os.path.join(os.path.dirname(__file__), "scripts-py"))
+sys.path.insert(0, os.path.dirname(__file__))
 from extract_metrics import get_all_metrics  # type: ignore
 
 
