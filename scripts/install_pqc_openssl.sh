@@ -3,19 +3,18 @@
 # Warn user that script must be run from the project root
 echo -e "WARNING: THIS SCRIPT MUST BE RUN FROM THE PROJECT ROOT DIRECTORY"
 
-# Init oqs-provider repo
-rm -rf oqs-provider; git clone --branch 0.10.0 https://github.com/open-quantum-safe/oqs-provider.git
+# Init oqs-provider repo - custom fork for more algorithms enabling
+rm -rf oqs-provider; git clone --branch 0.10.0-round2-dev https://github.com/NectarCoder/oqs-provider.git
+# git clone --branch 0.10.0 https://github.com/open-quantum-safe/oqs-provider.git
 
-# Enable all algorithms (copy over modified generate.py)
-cd oqs-provider/oqs-template
-cp ../../scripts-py/generate.py generate.py
-cd ..
+# Change to oqs-provider directory
+cd oqs-provider
 
 # Clone liboqs - custom fork for more algorithms
-rm -rf liboqs; git clone --branch ds-0.14.0-release https://github.com/NectarCoder/liboqs.git
+rm -rf liboqs; git clone --branch ds-0.14.0-round2-dev https://github.com/NectarCoder/liboqs.git
 # git clone --branch ds-0.14.0-release https://github.com/open-quantum-safe/liboqs.git
 
-# Tell generator.py where liboqs is
+# Generate/enable algorithms for openssl to access
 export LIBOQS_SRC_DIR="$(pwd)/liboqs"
 python3 oqs-template/generate.py
 
