@@ -56,12 +56,10 @@ extract_pq_key_length() {
         }
     '); then
         echo "Error: Failed to parse PQ key material" >&2
-        exit 1
     fi
 
     if [ -z "$hex" ]; then
         echo "Error: PQ key material not found" >&2
-        exit 1
     fi
 
     printf "%d" $(( ${#hex} / 2 ))
