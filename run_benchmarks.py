@@ -94,7 +94,9 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'hawk512', ['hawk512','HAWK 512','1','184','1024','555'])
     # run_benchmark(out_csv, 'hawk1024', ['hawk1024','HAWK 1024','5','360','2440','1221'])
 
-    run_benchmark(out_csv, 'ryde1f', ['ryde1f','RYDE 1-Fast','1','32','69','3597'])
+    run_benchmark(out_csv, 'ryde1s', ['ryde1s','RYDE 1-Short','1','32','69','3115'])
+    run_benchmark(out_csv, 'ryde3s', ['ryde3s','RYDE 3-Short','3','48','101','7064'])
+    run_benchmark(out_csv, 'ryde5s', ['ryde5s','RYDE 5-Short','5','64','132','12607'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
     
@@ -108,3 +110,6 @@ if __name__ == "__main__":
 
     # We are not testing the "fast" variants of PERK
     # run_benchmark(out_csv, 'perk128fast3', ['perk128fast3','PERK 128 Fast 3 Iterations','1','164','148','8345'])
+
+    # We are not testing the "fast" variants of RYDE
+    # run_benchmark(out_csv, 'ryde1f', ['ryde1f','RYDE 1-Fast','1','32','69','3597'])

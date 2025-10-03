@@ -14,6 +14,13 @@ cd oqs-provider
 rm -rf liboqs; git clone --branch ds-0.14.0-round2-dev https://github.com/NectarCoder/liboqs.git
 # git clone --branch ds-0.14.0-release https://github.com/open-quantum-safe/liboqs.git
 
+# Only build generic C implementations, no assembly optimizations
+export CMAKE_PARAMS="${CMAKE_PARAMS:+$CMAKE_PARAMS } -DOQS_DIST_BUILD=OFF -DOQS_OPT_TARGET=generic \
+-DOQS_USE_AVX2_INSTRUCTIONS=OFF -DOQS_USE_AVX512_INSTRUCTIONS=OFF \
+-DOQS_USE_AVX_INSTRUCTIONS=OFF -DOQS_USE_ARM_NEON_INSTRUCTIONS=OFF"
+# export CFLAGS="-O2 -march=x86-64 -mtune=generic"
+# export CXXFLAGS="$CFLAGS" 
+
 # Generate/enable algorithms for openssl to access
 export LIBOQS_SRC_DIR="$(pwd)/liboqs"
 python3 oqs-template/generate.py
