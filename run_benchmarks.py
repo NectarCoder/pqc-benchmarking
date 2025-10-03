@@ -84,15 +84,17 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'uoviii', ['OV_III', 'UOV-III', '3', '2269788', '1225461', '200'])
     # run_benchmark(out_csv, 'uovv', ['OV_V', 'UOV-V', '5', '5306172', '2869461', '260'])
 
-    run_benchmark(out_csv, 'perk128short3', ['perk128short3','PERK 128 Short 3 Iterations','1','164','148','6251'])
-    run_benchmark(out_csv, 'perk128short5', ['perk128short5','PERK 128 Short 5 Iterations','5','257','241','5780'])
-    run_benchmark(out_csv, 'perk192short3', ['perk192short3','PERK 192 Short 3 Iterations','3','251','227','14280'])
-    run_benchmark(out_csv, 'perk192short5', ['perk192short5','PERK 192 Short 5 Iterations','5','392','368','13164'])
-    run_benchmark(out_csv, 'perk256short3', ['perk256short3','PERK 256 Short 3 Iterations','3','346','314','25141'])
-    run_benchmark(out_csv, 'perk256short5', ['perk256short5','PERK 256 Short 5 Iterations','5','539','507','23040'])
+    # run_benchmark(out_csv, 'perk128short3', ['perk128short3','PERK 128 Short 3 Iterations','1','164','148','6251'])
+    # run_benchmark(out_csv, 'perk128short5', ['perk128short5','PERK 128 Short 5 Iterations','5','257','241','5780'])
+    # run_benchmark(out_csv, 'perk192short3', ['perk192short3','PERK 192 Short 3 Iterations','3','251','227','14280'])
+    # run_benchmark(out_csv, 'perk192short5', ['perk192short5','PERK 192 Short 5 Iterations','5','392','368','13164'])
+    # run_benchmark(out_csv, 'perk256short3', ['perk256short3','PERK 256 Short 3 Iterations','3','346','314','25141'])
+    # run_benchmark(out_csv, 'perk256short5', ['perk256short5','PERK 256 Short 5 Iterations','5','539','507','23040'])
 
-    run_benchmark(out_csv, 'hawk512', ['hawk512','HAWK 512','1','184','1024','555'])
-    run_benchmark(out_csv, 'hawk1024', ['hawk1024','HAWK 1024','5','360','2440','1221'])
+    # run_benchmark(out_csv, 'hawk512', ['hawk512','HAWK 512','1','184','1024','555'])
+    # run_benchmark(out_csv, 'hawk1024', ['hawk1024','HAWK 1024','5','360','2440','1221'])
+
+    run_benchmark(out_csv, 'ryde1f', ['ryde1f','RYDE 1-Fast','1','32','69','3597'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
     
