@@ -21,6 +21,9 @@ export CMAKE_PARAMS="${CMAKE_PARAMS:+$CMAKE_PARAMS } -DOQS_DIST_BUILD=OFF -DOQS_
 # export CFLAGS="-O2 -march=x86-64 -mtune=generic"
 # export CXXFLAGS="$CFLAGS" 
 
+# Tell OpenSSL configure to avoid assembly
+export OSSL_CONFIG="no-asm"
+
 # Generate/enable algorithms for openssl to access
 export LIBOQS_SRC_DIR="$(pwd)/liboqs"
 python3 oqs-template/generate.py
