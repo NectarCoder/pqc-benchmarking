@@ -91,11 +91,5 @@ msg_bytes=$(wc -c < "$MESSAGE_FILE")
 ./openssl pkeyutl -sign -inkey "$PRIVATE_KEY_FILE" -in "$MESSAGE_FILE" -provider default -provider oqsprovider -out "$SIGNATURE_FILE" 2>/dev/null
 # ./openssl dgst -sha256 -sign "$PRIVATE_KEY_FILE" -out "$SIGNATURE_FILE" "$MESSAGE_FILE" 2>/dev/null
 sig_bytes=$(wc -c < "$SIGNATURE_FILE")
-sig_raw_bytes=$((sig_bytes - msg_bytes))
-if [ "$sig_raw_bytes" -lt 0 ]; then
-    echo "Error: Calculated raw signature size is negative."
-    exit 1
-fi
 echo "Signed message size: ${BOLD}$sig_bytes bytes${NORMAL}"
-echo "Raw PQ material: ${BOLD}$sig_raw_bytes bytes${NORMAL}"
 echo

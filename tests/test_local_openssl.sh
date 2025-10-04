@@ -19,7 +19,7 @@ printf_err() { printf "%b[ERR]%b %s\n" "$COLOR_ERR" "$COLOR_RESET" "$*"; }
 printf_info "Checking repo-local OpenSSL wrapper: $OPENSSL_WRAPPER"
 
 if [ ! -x "$OPENSSL_WRAPPER" ]; then
-    printf_err "openss l wrapper not found or not executable at: $OPENSSL_WRAPPER"
+    printf_err "openssl wrapper not found or not executable at: $OPENSSL_WRAPPER"
     printf_err "Please build/install the local OpenSSL used by the tests (see scripts/install_pqc_openssl.sh)."
     printf "\n"
     exit 2

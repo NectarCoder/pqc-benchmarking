@@ -140,15 +140,14 @@ else
 	arg_up="$(printf '%s' "$arg" | tr '[:lower:]' '[:upper:]')"
 
 	# Allow user to pass QR-UOV using qr-uov or qr_uov; normalize underscores to hyphen
-	arg_up="${arg_up//_/ -}"
-	arg_up="${arg_up// /}"
+	arg_up="${arg_up//_/-}"
 	# Special-case to ensure QR-UOV maps correctly (handle QR-UOV, QR_UOV, QRUOV)
 	if [[ "$arg_up" =~ ^QR.?UOV$ ]]; then
 		arg_up="QR-UOV"
 	fi
 
 	# Special-case SDitH variations -> SDITH
-	if [[ "${arg_up,,}" == "sdith" || "${arg_up,,}" == "sdit h" ]]; then
+	if [[ "${arg_up,,}" == "sdith" ]]; then
 		arg_up="SDITH"
 	fi
 
