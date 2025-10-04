@@ -109,6 +109,7 @@ run_variant() {
 
     if [ ${#errs[@]} -eq 0 ]; then
         printf_ok "Variant %s: SUCCESS" "$alg"
+        # Cleanup generated files on success
         rm -f "$priv" "$pub" "$csr" "$crt"
         rm -f "${prefix}.genpkey.err" "${prefix}.pkey.err" "${prefix}.req.err" "${prefix}.x509.err" "${prefix}.verify.err"
         return 0

@@ -15,6 +15,8 @@ VARIANTS=(
 	snova2455
 	snova60104
 	snova2965
+	snova66153
+	snova75332
 )
 
 exec "$SCRIPT_DIR/test_algorithm_family.sh" SNOVA "${VARIANTS[@]}"

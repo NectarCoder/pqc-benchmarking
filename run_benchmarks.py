@@ -78,6 +78,9 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'snova2455', ['snova2455','SNOVA-24-5-5','3','48','1579','379'])
     # run_benchmark(out_csv, 'snova60104', ['snova60104','SNOVA-60-10-4','5','48','8016','576'])
     # run_benchmark(out_csv, 'snova2965', ['snova2965','SNOVA-29-6-5','5','48','2716','454'])
+    run_benchmark(out_csv, 'snova66153', ['snova66153','SNOVA-66-15-3','5','48','15204','381'])
+    run_benchmark(out_csv, 'snova75332', ['snova75332','SNOVA-75-33-2','5','48','71890','232'])
+
 
     # run_benchmark(out_csv, 'uovis', ['OV_Is', 'UOV-Is', '1', '760892', '412181', '96'])
     # run_benchmark(out_csv, 'uovip', ['OV_Ip', 'UOV-Ip', '1', '516356', '278453', '128'])
@@ -94,9 +97,9 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'hawk512', ['hawk512','HAWK 512','1','184','1024','555'])
     # run_benchmark(out_csv, 'hawk1024', ['hawk1024','HAWK 1024','5','360','2440','1221'])
 
-    run_benchmark(out_csv, 'ryde1s', ['ryde1s','RYDE 1-Short','1','32','69','3115'])
-    run_benchmark(out_csv, 'ryde3s', ['ryde3s','RYDE 3-Short','3','48','101','7064'])
-    run_benchmark(out_csv, 'ryde5s', ['ryde5s','RYDE 5-Short','5','64','132','12607'])
+    # run_benchmark(out_csv, 'ryde1s', ['ryde1s','RYDE 1-Short','1','32','69','3115'])
+    # run_benchmark(out_csv, 'ryde3s', ['ryde3s','RYDE 3-Short','3','48','101','7064'])
+    # run_benchmark(out_csv, 'ryde5s', ['ryde5s','RYDE 5-Short','5','64','132','12607'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
     
