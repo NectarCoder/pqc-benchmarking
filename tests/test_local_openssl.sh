@@ -21,7 +21,6 @@ printf_info "Checking repo-local OpenSSL wrapper: $OPENSSL_WRAPPER"
 if [ ! -x "$OPENSSL_WRAPPER" ]; then
     printf_err "openss l wrapper not found or not executable at: $OPENSSL_WRAPPER"
     printf_err "Please build/install the local OpenSSL used by the tests (see scripts/install_pqc_openssl.sh)."
-    # add a blank line for readability before exiting
     printf "\n"
     exit 2
 fi
@@ -36,7 +35,6 @@ if "$OPENSSL_WRAPPER" version >/dev/null 2>&1; then
 else
     printf_err "repo-local OpenSSL wrapper did not run successfully."
     printf_err "Run the repo setup/build (e.g. scripts/install_pqc_openssl.sh) to build OpenSSL."
-    # add a blank line for readability before exiting
     printf "\n"
     exit 3
 fi

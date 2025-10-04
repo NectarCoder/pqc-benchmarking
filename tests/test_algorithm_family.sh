@@ -117,6 +117,7 @@ run_variant() {
         for e in "${errs[@]}"; do
             die "$e"
         done
+        printf "\n"
         for ef in "${prefix}."*.err; do
             [ -f "$ef" ] || continue
             printf "\n===== Contents of %s =====\n" "$ef"

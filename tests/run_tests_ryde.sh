@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-# Standardized stub for family tests
+# RYDE family test wrapper — delegates to the generic harness.
 set -euo pipefail
 
-printf_info() { printf "[INFO] %s\n" "$*"; }
-printf_ok() { printf "\x1b[32m[OK]\x1b[0m "; printf "$@"; printf "\n"; }
-printf_err() { printf "\x1b[31m[ERR]\x1b[0m "; printf "$@"; printf "\n"; }
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-family="$(basename "$0" | sed -e 's/^run_tests_//' -e 's/\.sh$//' -e 's/_/\-/g')"
-printf_info "TODO: run ${family} family tests"
-exit 0
+VARIANTS=(
+	ryde1s
+	ryde3s
+	ryde5s
+)
+
+exec "$SCRIPT_DIR/test_algorithm_family.sh" RYDE "${VARIANTS[@]}"
