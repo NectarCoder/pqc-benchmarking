@@ -186,6 +186,41 @@ You can clean all built files with:
 #   -oqs        Also remove top-level oqs-provider directory (disabled by default)
 ```
 
+### Testing  
+
+You can run tests for all algorithm families or a specific family.  
+From the project root, use the script [tests/run_tests.sh](/tests/run_tests.sh) - see usage examples below.
+
+- Run a single family (example: CROSS):
+
+```bash
+./tests/run_tests.sh CROSS
+```
+
+- Run all families:
+
+```bash
+./tests/run_tests.sh
+```
+
+- Override which OpenSSL binary is used (useful for a locally-built wrapper):
+
+```bash
+OPENSSL=/path/to/openssl ./tests/run_tests.sh
+```
+
+- Disable colored output (useful when redirecting output or in CI):
+
+```bash
+NO_COLOR=1 ./tests/run_tests.sh CROSS
+```
+
+- Usage help:
+
+```bash
+./tests/run_tests.sh --help
+```
+
 ---
 
 ##### References & Notes

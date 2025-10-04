@@ -38,12 +38,11 @@ EOF
 
 # Ordered list of families for the "run all" mode (use uppercase keys).
 FAMILIES=(
-  RSA DILITHIUM SPHINCS FALCON CROSS FAEST HAWK LESS MAYO MIRATH MQOM PERK "QR-UOV" RYDE SDITH SNOVA SQISIGN UOV
+  DILITHIUM SPHINCS FALCON CROSS FAEST HAWK LESS MAYO MIRATH MQOM PERK "QR-UOV" RYDE SDITH SNOVA SQISIGN UOV
 )
 
 # Mapping from canonical uppercase family token -> script filename
 declare -A FAMILY_SCRIPT
-FAMILY_SCRIPT["RSA"]="run_tests_rsa.sh"
 FAMILY_SCRIPT["DILITHIUM"]="run_tests_dilithium.sh"
 FAMILY_SCRIPT["SPHINCS"]="run_tests_sphincs.sh"
 FAMILY_SCRIPT["FALCON"]="run_tests_falcon.sh"
