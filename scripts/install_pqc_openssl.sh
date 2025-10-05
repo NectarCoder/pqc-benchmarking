@@ -14,12 +14,14 @@ cd oqs-provider
 rm -rf liboqs; git clone --branch ds-0.14.0-round2-dev https://github.com/NectarCoder/liboqs.git
 # git clone --branch ds-0.14.0-release https://github.com/open-quantum-safe/liboqs.git
 
-# Only build generic C implementations, no assembly optimizations
+# Only build generic C implementations, no assembly/compiler optimizations based on hardware
+# (generic CPU runtime efficiency)
 export CMAKE_PARAMS="${CMAKE_PARAMS:+$CMAKE_PARAMS } -DOQS_DIST_BUILD=OFF -DOQS_OPT_TARGET=generic \
 -DOQS_USE_AVX2_INSTRUCTIONS=OFF -DOQS_USE_AVX512_INSTRUCTIONS=OFF \
--DOQS_USE_AVX_INSTRUCTIONS=OFF -DOQS_USE_ARM_NEON_INSTRUCTIONS=OFF"
-# export CFLAGS="-O2 -march=x86-64 -mtune=generic"
-# export CXXFLAGS="$CFLAGS" 
+-DOQS_USE_AVX_INSTRUCTIONS=OFF -DOQS_USE_ARM_NEON_INSTRUCTIONS=OFF \
+-DCMAKE_C_FLAGS=\"-O1\""
+export CFLAGS="-O1"
+export CXXFLAGS="$CFLAGS" 
 
 # Tell OpenSSL configure to avoid assembly
 export OSSL_CONFIG="no-asm"
