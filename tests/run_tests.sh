@@ -38,28 +38,28 @@ EOF
 
 # Ordered list of families for the "run all" mode (use uppercase keys).
 FAMILIES=(
-  DILITHIUM SPHINCS FALCON CROSS FAEST HAWK LESS MAYO MIRATH MQOM PERK "QR-UOV" RYDE SDITH SNOVA SQISIGN UOV
+  DILITHIUM FALCON SPHINCS MAYO CROSS UOV SNOVA PERK HAWK RYDE FAEST LESS MIRATH MQOM "QR-UOV" SDITH SQISIGN
 )
 
 # Mapping from canonical uppercase family token -> script filename
 declare -A FAMILY_SCRIPT
 FAMILY_SCRIPT["DILITHIUM"]="run_tests_dilithium.sh"
-FAMILY_SCRIPT["SPHINCS"]="run_tests_sphincs.sh"
 FAMILY_SCRIPT["FALCON"]="run_tests_falcon.sh"
-FAMILY_SCRIPT["CROSS"]="run_tests_cross.sh"
-FAMILY_SCRIPT["FAEST"]="run_tests_faest.sh"
-FAMILY_SCRIPT["HAWK"]="run_tests_hawk.sh"
-FAMILY_SCRIPT["LESS"]="run_tests_less.sh"
+FAMILY_SCRIPT["SPHINCS"]="run_tests_sphincs.sh"
 FAMILY_SCRIPT["MAYO"]="run_tests_mayo.sh"
+FAMILY_SCRIPT["CROSS"]="run_tests_cross.sh"
+FAMILY_SCRIPT["UOV"]="run_tests_uov.sh"
+FAMILY_SCRIPT["SNOVA"]="run_tests_snova.sh"
+FAMILY_SCRIPT["PERK"]="run_tests_perk.sh"
+FAMILY_SCRIPT["HAWK"]="run_tests_hawk.sh"
+FAMILY_SCRIPT["RYDE"]="run_tests_ryde.sh"
+FAMILY_SCRIPT["FAEST"]="run_tests_faest.sh"
+FAMILY_SCRIPT["LESS"]="run_tests_less.sh"
 FAMILY_SCRIPT["MIRATH"]="run_tests_mirath.sh"
 FAMILY_SCRIPT["MQOM"]="run_tests_mqom.sh"
-FAMILY_SCRIPT["PERK"]="run_tests_perk.sh"
 FAMILY_SCRIPT["QR-UOV"]="run_tests_qr_uov.sh"
-FAMILY_SCRIPT["RYDE"]="run_tests_ryde.sh"
 FAMILY_SCRIPT["SDITH"]="run_tests_sdith.sh"
-FAMILY_SCRIPT["SNOVA"]="run_tests_snova.sh"
 FAMILY_SCRIPT["SQISIGN"]="run_tests_sqisign.sh"
-FAMILY_SCRIPT["UOV"]="run_tests_uov.sh"
 
 run_script() {
 	local fam_key="$1"

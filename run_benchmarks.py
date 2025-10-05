@@ -81,7 +81,6 @@ if __name__ == "__main__":
     run_benchmark(out_csv, 'snova66153', ['snova66153','SNOVA-66-15-3','5','48','15204','381'])
     run_benchmark(out_csv, 'snova75332', ['snova75332','SNOVA-75-33-2','5','48','71890','232'])
 
-
     # run_benchmark(out_csv, 'uovis', ['OV_Is', 'UOV-Is', '1', '760892', '412181', '96'])
     # run_benchmark(out_csv, 'uovip', ['OV_Ip', 'UOV-Ip', '1', '516356', '278453', '128'])
     # run_benchmark(out_csv, 'uoviii', ['OV_III', 'UOV-III', '3', '2269788', '1225461', '200'])
@@ -100,6 +99,18 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'ryde1s', ['ryde1s','RYDE 1-Short','1','32','69','3115'])
     # run_benchmark(out_csv, 'ryde3s', ['ryde3s','RYDE 3-Short','3','48','101','7064'])
     # run_benchmark(out_csv, 'ryde5s', ['ryde5s','RYDE 5-Short','5','64','132','12607'])
+
+    """
+    FAEST VARIANT   sk   pk   sig
+    faest128s 32	32	4506
+    faest192s 40 48	11260
+    faest256s 48	48	20696
+    faest128s_em 32	32	3906
+    faest192s_em 48	48	9340
+    faest256s_em 64	64	17984
+    """
+    run_benchmark(out_csv, 'faest128s', ['faest128s','FAEST 128s','1','32','32','4506'])
+    run_benchmark(out_csv, 'faest192s', ['faest192s','FAEST 192s','3','40','48','11260'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
     
