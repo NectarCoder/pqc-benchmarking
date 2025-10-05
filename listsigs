@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+echo "./openssl list -signature-algorithms -provider default -provider oqsprovider"
+./openssl list -signature-algorithms -provider default -provider oqsprovider "$@"

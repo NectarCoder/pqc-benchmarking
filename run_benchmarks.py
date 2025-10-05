@@ -41,43 +41,68 @@ if __name__ == "__main__":
 
     # Run benchmarks for each algorithm
     # Arguments: (output_csv, prefix, [algorithm id, algorithm name, NIST security level, private key size, public key size, signature size])
-    run_benchmark(out_csv, 'rsa',        ['rsa', 'RSA 2048', 'N/A','1191','294','256'])
-    run_benchmark(out_csv, 'dilithium2', ['mldsa44','Dilithium 2', '2','2626','1334','2420'])
-    run_benchmark(out_csv, 'dilithium3', ['mldsa65','Dilithium 3', '3','4098','1974','3309'])
-    run_benchmark(out_csv, 'dilithium5', ['mldsa87','Dilithium 5', '5','4962','2614','4627'])
-    run_benchmark(out_csv, 'sphincssha1s', ['slh-dsa-sha2-128s','SPHINCS+ SHA 128s', '1','84','50','7856'])
-    run_benchmark(out_csv, 'sphincssha3s', ['slh-dsa-sha2-192s','SPHINCS+ SHA 192s', '3','116','66','16224'])
-    run_benchmark(out_csv, 'sphincssha5s', ['slh-dsa-sha2-256s','SPHINCS+ SHA 256s', '5','150','82','29792'])
-    run_benchmark(out_csv, 'sphincsshake1s', ['slh-dsa-shake-128s','SPHINCS+ SHAKE 128s', '1','84','50','7856'])
-    run_benchmark(out_csv, 'sphincsshake3s', ['slh-dsa-shake-192s','SPHINCS+ SHAKE 192s', '3','116','66','16224'])
-    run_benchmark(out_csv, 'sphincsshake5s', ['slh-dsa-shake-256s','SPHINCS+ SHAKE 256s', '5','150','82','29792'])
-    run_benchmark(out_csv, 'falcon512', ['falcon512','FALCON 512','1','2202','915','657'])
-    run_benchmark(out_csv, 'falcon1024', ['falcon1024','FALCON 1024','5','4122','1811','1267'])
-    run_benchmark(out_csv, 'mayo1', ['mayo1','MAYO 1','1','1469','1439','454'])
-    run_benchmark(out_csv, 'mayo2', ['mayo2','MAYO 2','2','4961','4931','186'])
-    run_benchmark(out_csv, 'mayo3', ['mayo3','MAYO 3','3','3043','3005','681'])
-    run_benchmark(out_csv, 'mayo5', ['mayo5','MAYO 5','5','5619','5573','964'])
-    run_benchmark(out_csv, 'crossrsdp1s', ['CROSS-RSDP-128-small','CROSS-RSDP-128-Small','1','136','99','12432'])
-    run_benchmark(out_csv, 'crossrsdp3s', ['CROSS-RSDP-192-small','CROSS-RSDP-192-Small','3','192','138','28391'])
-    run_benchmark(out_csv, 'crossrsdp5s', ['CROSS-RSDP-256-small','CROSS-RSDP-256-Small','5','246','177','50818'])
-    run_benchmark(out_csv, 'crossrsdpg1s', ['CROSS-RSDP-G-128-small','CROSS-RSDP-G-128-Small','1','112','76','8960'])
-    run_benchmark(out_csv, 'crossrsdpg3s', ['CROSS-RSDP-G-192-small','CROSS-RSDP-G-192-Small','3','160','105','20452'])
-    run_benchmark(out_csv, 'crossrsdpg5s', ['CROSS-RSDP-G-256-small','CROSS-RSDP-G-256-Small','5','199','128','36454'])
-    run_benchmark(out_csv, 'snova2454', ['snova2454','SNOVA_24_5_4','1','1089','1035','248'])
-    run_benchmark(out_csv, 'snova37172', ['snova37172','SNOVA_37_17_2','1','9915','9861','124'])
-    run_benchmark(out_csv, 'snova2583', ['snova2583','SNOVA_25_8_3','3','2393','2339','165'])
-    run_benchmark(out_csv, 'snova56252', ['snova56252','SNOVA_56_25_2','3','31339','31285','178'])
-    run_benchmark(out_csv, 'snova2455', ['snova2455','SNOVA_24_5_5','3','1652','1598','379'])
-    run_benchmark(out_csv, 'snova49113', ['snova49113','SNOVA_49_11_3','5','6079','6025','286'])
-    run_benchmark(out_csv, 'snova3784', ['snova3784','SNOVA_37_8_4','5','4185','4131','376'])
-    run_benchmark(out_csv, 'snova60104', ['snova60104','SNOVA_60_10_4','5','8089','8035','576'])
-    run_benchmark(out_csv, 'snova2965', ['snova2965','SNOVA_29_6_5','5','2789','2735','454'])
-    run_benchmark(out_csv, 'uovis', ['OV_Is', 'UOV-Is', '1', '760892', '412181', '96'])
-    run_benchmark(out_csv, 'uovip', ['OV_Ip', 'UOV-Ip', '1', '516356', '278453', '128'])
-    run_benchmark(out_csv, 'uoviii', ['OV_III', 'UOV-III', '3', '2269788', '1225461', '200'])
-    run_benchmark(out_csv, 'uovv', ['OV_V', 'UOV-V', '5', '5306172', '2869461', '260'])
+    # run_benchmark(out_csv, 'rsa',        ['rsa', 'RSA 2048', 'N/A','1190','294','256'])
+
+    # run_benchmark(out_csv, 'dilithium2', ['mldsa44','ML-DSA/Dilithium 2', '2','2560','1312','2420'])
+    # run_benchmark(out_csv, 'dilithium3', ['mldsa65','ML-DSA/Dilithium 3', '3','4032','1952','3309'])
+    # run_benchmark(out_csv, 'dilithium5', ['mldsa87','ML-DSA/Dilithium 5', '5','4896','2592','4627'])
+
+    # run_benchmark(out_csv, 'sphincssha1s', ['slh-dsa-sha2-128s','SLH-DSA/SPHINCS+ SHA 128s', '1','64','32','7856'])
+    # run_benchmark(out_csv, 'sphincssha3s', ['slh-dsa-sha2-192s','SLH-DSA/SPHINCS+ SHA 192s', '3','96','48','16224'])
+    # run_benchmark(out_csv, 'sphincssha5s', ['slh-dsa-sha2-256s','SLH-DSA/SPHINCS+ SHA 256s', '5','128','64','29792'])
+    # run_benchmark(out_csv, 'sphincsshake1s', ['slh-dsa-shake-128s','SLH-DSA/SPHINCS+ SHAKE 128s', '1','64','32','7856'])
+    # run_benchmark(out_csv, 'sphincsshake3s', ['slh-dsa-shake-192s','SLH-DSA/SPHINCS+ SHAKE 192s', '3','96','48','16224'])
+    # run_benchmark(out_csv, 'sphincsshake5s', ['slh-dsa-shake-256s','SLH-DSA/SPHINCS+ SHAKE 256s', '5','128','64','29792'])
+
+    # run_benchmark(out_csv, 'falcon512', ['falcon512','FALCON 512','1','1281','897','666'])
+    # run_benchmark(out_csv, 'falcon1024', ['falcon1024','FALCON 1024','5','2305','1793','1280'])
+
+    # run_benchmark(out_csv, 'mayo1', ['mayo1','MAYO 1','1','24','1420','454'])
+    # run_benchmark(out_csv, 'mayo2', ['mayo2','MAYO 2','1','24','4912','186'])
+    # run_benchmark(out_csv, 'mayo3', ['mayo3','MAYO 3','3','32','2986','681'])
+    # run_benchmark(out_csv, 'mayo5', ['mayo5','MAYO 5','5','40','5554','964'])
+
+    # run_benchmark(out_csv, 'crossrsdp1s', ['CROSSrsdp128small','CROSS-RSDP-128-Small','1','32','77','12432'])
+    # run_benchmark(out_csv, 'crossrsdp3s', ['CROSSrsdp192small','CROSS-RSDP-192-Small','3','48','115','28391'])
+    # run_benchmark(out_csv, 'crossrsdp5s', ['CROSSrsdp256small','CROSS-RSDP-256-Small','5','64','153','50818'])
+    # run_benchmark(out_csv, 'crossrsdpg1s', ['CROSSrsdpg128small','CROSS-RSDP-G-128-Small','1','32','54','8960'])
+    # run_benchmark(out_csv, 'crossrsdpg3s', ['CROSSrsdpg192small','CROSS-RSDP-G-192-Small','3','48','83','20452'])
+    # run_benchmark(out_csv, 'crossrsdpg5s', ['CROSSrsdpg256small','CROSS-RSDP-G-256-Small','5','64','106','36454'])
+
+    # run_benchmark(out_csv, 'snova2454', ['snova2454','SNOVA-24-5-4','1','48','1016','248'])
+    # run_benchmark(out_csv, 'snova37172', ['snova37172','SNOVA-37-17-2','1','48','9842','124'])
+    # run_benchmark(out_csv, 'snova2583', ['snova2583','SNOVA-25-8-3','1','48','2320','165'])
+    # run_benchmark(out_csv, 'snova56252', ['snova56252','SNOVA-56-25-2','3','48','31266','178'])
+    # run_benchmark(out_csv, 'snova49113', ['snova49113','SNOVA-49-11-3','3','48','6006','286'])
+    # run_benchmark(out_csv, 'snova3784', ['snova3784','SNOVA-37-8-4','3','48','4112','376'])
+    # run_benchmark(out_csv, 'snova2455', ['snova2455','SNOVA-24-5-5','3','48','1579','379'])
+    # run_benchmark(out_csv, 'snova60104', ['snova60104','SNOVA-60-10-4','5','48','8016','576'])
+    # run_benchmark(out_csv, 'snova2965', ['snova2965','SNOVA-29-6-5','5','48','2716','454'])
+    run_benchmark(out_csv, 'snova66153', ['snova66153','SNOVA-66-15-3','5','48','15204','381'])
+    run_benchmark(out_csv, 'snova75332', ['snova75332','SNOVA-75-33-2','5','48','71890','232'])
 
 
+    # run_benchmark(out_csv, 'uovis', ['OV_Is', 'UOV-Is', '1', '760892', '412181', '96'])
+    # run_benchmark(out_csv, 'uovip', ['OV_Ip', 'UOV-Ip', '1', '516356', '278453', '128'])
+    # run_benchmark(out_csv, 'uoviii', ['OV_III', 'UOV-III', '3', '2269788', '1225461', '200'])
+    # run_benchmark(out_csv, 'uovv', ['OV_V', 'UOV-V', '5', '5306172', '2869461', '260'])
+
+    # run_benchmark(out_csv, 'perk128short3', ['perk128short3','PERK 128 Short 3 Iterations','1','164','148','6251'])
+    # run_benchmark(out_csv, 'perk128short5', ['perk128short5','PERK 128 Short 5 Iterations','5','257','241','5780'])
+    # run_benchmark(out_csv, 'perk192short3', ['perk192short3','PERK 192 Short 3 Iterations','3','251','227','14280'])
+    # run_benchmark(out_csv, 'perk192short5', ['perk192short5','PERK 192 Short 5 Iterations','5','392','368','13164'])
+    # run_benchmark(out_csv, 'perk256short3', ['perk256short3','PERK 256 Short 3 Iterations','3','346','314','25141'])
+    # run_benchmark(out_csv, 'perk256short5', ['perk256short5','PERK 256 Short 5 Iterations','5','539','507','23040'])
+
+    # run_benchmark(out_csv, 'hawk512', ['hawk512','HAWK 512','1','184','1024','555'])
+    # run_benchmark(out_csv, 'hawk1024', ['hawk1024','HAWK 1024','5','360','2440','1221'])
+
+    # run_benchmark(out_csv, 'ryde1s', ['ryde1s','RYDE 1-Short','1','32','69','3115'])
+    # run_benchmark(out_csv, 'ryde3s', ['ryde3s','RYDE 3-Short','3','48','101','7064'])
+    # run_benchmark(out_csv, 'ryde5s', ['ryde5s','RYDE 5-Short','5','64','132','12607'])
+
+    print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
+    
     # We are not testing the "fast" variants of SPHINCS+
     # run_benchmark(out_csv, 'sphincssha1f', ['slh-dsa-sha2-128f','SPHINCS+ SHA 128f', '1','84','50','17088'])
     # run_benchmark(out_csv, 'sphincssha3f', ['slh-dsa-sha2-192f','SPHINCS+ SHA 192f', '3','116','66','35664'])
@@ -85,3 +110,9 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'sphincsshake1f', ['slh-dsa-shake-128f','SPHINCS+ SHAKE 128f', '1','84','50','17088'])
     # run_benchmark(out_csv, 'sphincsshake3f', ['slh-dsa-shake-192f','SPHINCS+ SHAKE 192f', '3','116','66','35664'])
     # run_benchmark(out_csv, 'sphincsshake5f', ['slh-dsa-shake-256f','SPHINCS+ SHAKE 256f', '5','150','82','49856'])
+
+    # We are not testing the "fast" variants of PERK
+    # run_benchmark(out_csv, 'perk128fast3', ['perk128fast3','PERK 128 Fast 3 Iterations','1','164','148','8345'])
+
+    # We are not testing the "fast" variants of RYDE
+    # run_benchmark(out_csv, 'ryde1f', ['ryde1f','RYDE 1-Fast','1','32','69','3597'])

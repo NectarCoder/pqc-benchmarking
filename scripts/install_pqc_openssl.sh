@@ -3,26 +3,37 @@
 # Warn user that script must be run from the project root
 echo -e "WARNING: THIS SCRIPT MUST BE RUN FROM THE PROJECT ROOT DIRECTORY"
 
-# Init oqs-provider repo
-rm -rf oqs-provider; git clone --branch 0.10.0 https://github.com/open-quantum-safe/oqs-provider.git
+# Init oqs-provider repo - custom fork for more algorithms enabling
+rm -rf oqs-provider; git clone --branch 0.10.0-round2-dev https://github.com/NectarCoder/oqs-provider.git
+# git clone --branch 0.10.0 https://github.com/open-quantum-safe/oqs-provider.git
 
-# Enable all algorithms (copy over modified generate.py)
-cd oqs-provider/oqs-template
-cp ../../scripts-py/generate.py generate.py
-cd ..
+# Change to oqs-provider directory
+cd oqs-provider
 
 # Clone liboqs - custom fork for more algorithms
-rm -rf liboqs; git clone --branch ds-0.14.0-release https://github.com/NectarCoder/liboqs.git
+rm -rf liboqs; git clone --branch ds-0.14.0-round2-dev https://github.com/NectarCoder/liboqs.git
 # git clone --branch ds-0.14.0-release https://github.com/open-quantum-safe/liboqs.git
 
-# Tell generator.py where liboqs is
+# Only build generic C implementations, no assembly/compiler optimizations based on hardware
+# (generic CPU runtime efficiency)
+export CMAKE_PARAMS="${CMAKE_PARAMS:+$CMAKE_PARAMS } -DOQS_DIST_BUILD=OFF -DOQS_OPT_TARGET=generic \
+-DOQS_USE_AVX2_INSTRUCTIONS=OFF -DOQS_USE_AVX512_INSTRUCTIONS=OFF \
+-DOQS_USE_AVX_INSTRUCTIONS=OFF -DOQS_USE_ARM_NEON_INSTRUCTIONS=OFF \
+-DCMAKE_C_FLAGS=\"-O1\""
+export CFLAGS="-O1"
+export CXXFLAGS="$CFLAGS" 
+
+# Tell OpenSSL configure to avoid assembly
+export OSSL_CONFIG="no-asm"
+
+# Generate/enable algorithms for openssl to access
 export LIBOQS_SRC_DIR="$(pwd)/liboqs"
 python3 oqs-template/generate.py
 
 # Run the fullbuild script to setup the benchmarking environment
 echo; echo "***** RUNNING OQS-PROVIDER FULLBUILD SCRIPT *****"
 chmod +x scripts/fullbuild.sh
-OPENSSL_BRANCH=openssl-3.5.3 MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -f
+OPENSSL_BRANCH=openssl-3.5.4 MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -f
 # OPENSSL_BRANCH=openssl-3.5 LIBOQS_BRANCH=ds-0.14.0-release MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -f
 # OPENSSL_BRANCH=master LIBOQS_BRANCH=main MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -F
 echo; echo; echo "***** OQS-PROVIDER FULLBUILD SCRIPT COMPLETE *****"
