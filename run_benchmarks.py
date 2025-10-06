@@ -78,8 +78,8 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'snova2455', ['snova2455','SNOVA-24-5-5','3','48','1579','379'])
     # run_benchmark(out_csv, 'snova60104', ['snova60104','SNOVA-60-10-4','5','48','8016','576'])
     # run_benchmark(out_csv, 'snova2965', ['snova2965','SNOVA-29-6-5','5','48','2716','454'])
-    run_benchmark(out_csv, 'snova66153', ['snova66153','SNOVA-66-15-3','5','48','15204','381'])
-    run_benchmark(out_csv, 'snova75332', ['snova75332','SNOVA-75-33-2','5','48','71890','232'])
+    # run_benchmark(out_csv, 'snova66153', ['snova66153','SNOVA-66-15-3','5','48','15204','381'])
+    # run_benchmark(out_csv, 'snova75332', ['snova75332','SNOVA-75-33-2','5','48','71890','232'])
 
     # run_benchmark(out_csv, 'uovis', ['OV_Is', 'UOV-Is', '1', '760892', '412181', '96'])
     # run_benchmark(out_csv, 'uovip', ['OV_Ip', 'UOV-Ip', '1', '516356', '278453', '128'])
@@ -99,18 +99,13 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'ryde1s', ['ryde1s','RYDE 1-Short','1','32','69','3115'])
     # run_benchmark(out_csv, 'ryde3s', ['ryde3s','RYDE 3-Short','3','48','101','7064'])
     # run_benchmark(out_csv, 'ryde5s', ['ryde5s','RYDE 5-Short','5','64','132','12607'])
-
-    """
-    FAEST VARIANT   sk   pk   sig
-    faest128s 32	32	4506
-    faest192s 40 48	11260
-    faest256s 48	48	20696
-    faest128s_em 32	32	3906
-    faest192s_em 48	48	9340
-    faest256s_em 64	64	17984
-    """
+    
     run_benchmark(out_csv, 'faest128s', ['faest128s','FAEST 128s','1','32','32','4506'])
     run_benchmark(out_csv, 'faest192s', ['faest192s','FAEST 192s','3','40','48','11260'])
+    run_benchmark(out_csv, 'faest256s', ['faest256s','FAEST 256s','5','48','48','20696'])
+    run_benchmark(out_csv, 'faestem128s', ['faestem128s','FAEST-EM 128s','1','32','32','3906'])
+    run_benchmark(out_csv, 'faestem192s', ['faestem192s','FAEST-EM 192s','3','48','48','9340'])
+    run_benchmark(out_csv, 'faestem256s', ['faestem256s','FAEST-EM 256s','5','64','64','17984'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
     

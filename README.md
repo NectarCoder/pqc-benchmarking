@@ -27,7 +27,7 @@ In order to provide a comparative baseline, the current 3 standardized schemes [
 
 - CRYSTALS-Dilithium (Now known as ML-DSA) (FIPS 204)
 - Sphincs+ (Now known as SLH-DSA) (FIPS 205)
-- FALCON (Now known as FN-DSA) (FIPS 206)
+- FALCON (To be standardized as FN-DSA) (FIPS 206)
 
 ### What are the benchmarks?  
 
@@ -138,7 +138,16 @@ From the project root, run [scripts/install_dependencies.sh](/scripts/install_de
 ./scripts/install_dependencies.sh
 ```
 
-2. Set perf permissions
+2. Setup OpenSSL with oqs-provider and liboqs
+From the project root, run [scripts/install_pqc_openssl.sh](/scripts/install_pqc_openssl.sh):
+
+```bash
+# This version of OpenSSL does not override the system install
+# and is local to the project directory.
+./scripts/install_pqc_openssl.sh
+```
+
+3. Set perf permissions
 To be able to count CPU cycles, the system perf paranoia level needs to be set to 1 or lower.  
 From the project root, run [scripts/set_perf_level.sh](/scripts/set_perf_level.sh) (This will set the level to 1): 
 
@@ -153,13 +162,6 @@ Run the following command to revert:
 ```bash
 # sudo access is required
 ./scripts/reset_perf_level.sh
-```
-
-3. Setup OpenSSL with OQS-Provider and liboqs
-From the project root, run [scripts/install_pqc_openssl.sh](/scripts/install_pqc_openssl.sh):
-
-```bash
-./scripts/install_pqc_openssl.sh
 ```
 
 ### Benchmarking

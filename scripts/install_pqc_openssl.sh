@@ -22,8 +22,6 @@ export CMAKE_PARAMS="${CMAKE_PARAMS:+$CMAKE_PARAMS } -DOQS_DIST_BUILD=OFF -DOQS_
 -DCMAKE_C_FLAGS=\"-O1\""
 export CFLAGS="-O1"
 export CXXFLAGS="$CFLAGS" 
-
-# Tell OpenSSL configure to avoid assembly
 export OSSL_CONFIG="no-asm"
 
 # Generate/enable algorithms for openssl to access
@@ -33,7 +31,7 @@ python3 oqs-template/generate.py
 # Run the fullbuild script to setup the benchmarking environment
 echo; echo "***** RUNNING OQS-PROVIDER FULLBUILD SCRIPT *****"
 chmod +x scripts/fullbuild.sh
-OPENSSL_BRANCH=openssl-3.5.4 MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -f
+OPENSSL_BRANCH=openssl-3.6.0 MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -f
 # OPENSSL_BRANCH=openssl-3.5 LIBOQS_BRANCH=ds-0.14.0-release MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -f
 # OPENSSL_BRANCH=master LIBOQS_BRANCH=main MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -F
 echo; echo; echo "***** OQS-PROVIDER FULLBUILD SCRIPT COMPLETE *****"
