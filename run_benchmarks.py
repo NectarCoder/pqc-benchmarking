@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'scripts-py'))
 from csv_builder import init_benchmarks_csv, add_benchmarks  # type: ignore
 from calculate_averages import calculate_averages, calculate_medians  # type: ignore
 
-def run_benchmark(out_csv, prefix, static_items, runs=1):
+def run_benchmark(out_csv, prefix, static_items, runs=1): # Needs to be changed to runs=1000
     print(f"\n\033[93mBenchmarking {static_items[1]}...\033[0m")
     avg_kp, avg_csr, avg_cert, avg_ver = calculate_averages(prefix, runs=runs)
     med_kp, med_csr, med_cert, med_ver = calculate_medians(prefix, runs=runs)
@@ -41,6 +41,7 @@ if __name__ == "__main__":
 
     # Run benchmarks for each algorithm
     # Arguments: (output_csv, prefix, [algorithm id, algorithm name, NIST security level, private key size, public key size, signature size])
+
     # run_benchmark(out_csv, 'rsa',        ['rsa', 'RSA 2048', 'N/A','1190','294','256'])
 
     # run_benchmark(out_csv, 'dilithium2', ['mldsa44','ML-DSA/Dilithium 2', '2','2560','1312','2420'])
@@ -88,17 +89,21 @@ if __name__ == "__main__":
 
     # run_benchmark(out_csv, 'hawk512', ['hawk512','HAWK 512','1','184','1024','555'])
     # run_benchmark(out_csv, 'hawk1024', ['hawk1024','HAWK 1024','5','360','2440','1221'])
+    
+    # run_benchmark(out_csv, 'faest128s', ['faest128s','FAEST 128s','1','32','32','4506'])
+    # run_benchmark(out_csv, 'faest192s', ['faest192s','FAEST 192s','3','40','48','11260'])
+    # run_benchmark(out_csv, 'faest256s', ['faest256s','FAEST 256s','5','48','48','20696'])
+    # run_benchmark(out_csv, 'faestem128s', ['faestem128s','FAEST-EM 128s','1','32','32','3906'])
+    # run_benchmark(out_csv, 'faestem192s', ['faestem192s','FAEST-EM 192s','3','48','48','9340'])
+    # run_benchmark(out_csv, 'faestem256s', ['faestem256s','FAEST-EM 256s','5','64','64','17984'])
+
+    run_benchmark(out_csv, 'perkak1short', ['perkak1short','PERK-AES-KECCAK-1-short','1','120','104','3473'])
+    run_benchmark(out_csv, 'perkak3short', ['perkak3short','PERK-AES-KECCAK-3-short','3','175','151','8311'])
+    run_benchmark(out_csv, 'perkak5short', ['perkak5short','PERK-AES-KECCAK-5-short','5','227','195','14830'])
 
     # run_benchmark(out_csv, 'ryde1s', ['ryde1s','RYDE 1-Short','1','32','69','3115'])
     # run_benchmark(out_csv, 'ryde3s', ['ryde3s','RYDE 3-Short','3','48','101','7064'])
     # run_benchmark(out_csv, 'ryde5s', ['ryde5s','RYDE 5-Short','5','64','132','12607'])
-    
-    run_benchmark(out_csv, 'faest128s', ['faest128s','FAEST 128s','1','32','32','4506'])
-    run_benchmark(out_csv, 'faest192s', ['faest192s','FAEST 192s','3','40','48','11260'])
-    run_benchmark(out_csv, 'faest256s', ['faest256s','FAEST 256s','5','48','48','20696'])
-    run_benchmark(out_csv, 'faestem128s', ['faestem128s','FAEST-EM 128s','1','32','32','3906'])
-    run_benchmark(out_csv, 'faestem192s', ['faestem192s','FAEST-EM 192s','3','48','48','9340'])
-    run_benchmark(out_csv, 'faestem256s', ['faestem256s','FAEST-EM 256s','5','64','64','17984'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
     
