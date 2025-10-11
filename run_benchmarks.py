@@ -76,7 +76,7 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'crossrsdpg3s', ['CROSSrsdpg192small','CROSS-RSDP-G-192-Small','3','48','83','20452'])
     # run_benchmark(out_csv, 'crossrsdpg5s', ['CROSSrsdpg256small','CROSS-RSDP-G-256-Small','5','64','106','36454'])
 
-    # NOT DONE
+    # DONE
     # run_benchmark(out_csv, 'snova2454', ['snova2454','SNOVA-24-5-4','1','48','1016','248'])
     # run_benchmark(out_csv, 'snova37172', ['snova37172','SNOVA-37-17-2','1','48','9842','124'])
     # run_benchmark(out_csv, 'snova2583', ['snova2583','SNOVA-25-8-3','1','48','2320','165'])
