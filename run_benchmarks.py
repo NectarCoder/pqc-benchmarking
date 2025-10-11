@@ -116,16 +116,7 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'ryde1s', ['ryde1s','RYDE 1-Short','1','32','69','3115'])
     # run_benchmark(out_csv, 'ryde3s', ['ryde3s','RYDE 3-Short','3','48','101','7064'])
     # run_benchmark(out_csv, 'ryde5s', ['ryde5s','RYDE 5-Short','5','64','132','12607'])
-
-    """
-    Parameter Set	NIST Security Level	SK size	PK size	Sig size
-    Mirath-1a-Short	1	32 B	73 B	3 182 B
-    Mirath-1b-Short	1	32 B	57 B	2 990 B
-    Mirath-3a-Short	3	48 B	107 B	7 456 B
-    Mirath-3b-Short	3	48 B	84 B	6 825 B
-    Mirath-5a-Short	5	64 B	147 B	13 091 B
-    Mirath-5b-Short	5	64 B	112 B	12 229 B
-    """
+    
     # NOT DONE
     # run_benchmark(out_csv, 'mirath1ashort', ['mirathtcith1ashort','MIRATH-TCITH-1a-Short','1','32','73','3182'])
     # run_benchmark(out_csv, 'mirath1bshort', ['mirathtcith1bshort','MIRATH-TCITH-1b-Short','1','32','57','2990'])
