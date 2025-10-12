@@ -125,21 +125,10 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'mirath5ashort', ['mirathtcith5ashort','MIRATH-TCITH-5a-Short','5','64','147','13091'])
     # run_benchmark(out_csv, 'mirath5bshort', ['mirathtcith5bshort','MIRATH-TCITH-5b-Short','5','64','112','12229'])
 
-
-    """
-    TODO SDitH
-    Sec Level 1
-    Instance	Public Key (bytes)	Secret Key (bytes)	Signature (bytes)
-    SDitH2-L1-gf2-short	70	163	3705
-
-    Sec Level 3
-    Instance	Public Key (bytes)	Secret Key (bytes)	Signature (bytes)
-    SDitH2-L3-gf2-short	98	232	7964
-
-    Sec Level 5
-    Instance	Public Key (bytes)	Secret Key (bytes)	Signature (bytes)
-    SDitH2-L5-gf2-short	132	307	14121
-    """
+    # NOT DONE
+    run_benchmark(out_csv, 'sdithcat1short', ['sdithcat1short','SDitH-CAT-1-Short','1','163','70','3705'])
+    run_benchmark(out_csv, 'sdithcat3short', ['sdithcat3short','SDitH-CAT-3-Short','3','232','98','7964'])
+    run_benchmark(out_csv, 'sdithcat5short', ['sdithcat5short','SDitH-CAT-5-Short','5','307','132','14121'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
     
