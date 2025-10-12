@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'uoviii', ['OV_III', 'UOV-III', '3', '2269788', '1225461', '200'])
     # run_benchmark(out_csv, 'uovv', ['OV_V', 'UOV-V', '5', '5306172', '2869461', '260'])
 
-    # DONE
+    # NEEDS REDO
     # run_benchmark(out_csv, 'hawk512', ['hawk512','HAWK 512','1','184','1024','555'])
     # run_benchmark(out_csv, 'hawk1024', ['hawk1024','HAWK 1024','5','360','2440','1221'])
     
