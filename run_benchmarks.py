@@ -130,6 +130,96 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'sdithcat3short', ['sdithcat3short','SDitH-CAT-3-Short','3','232','98','7964'])
     # run_benchmark(out_csv, 'sdithcat5short', ['sdithcat5short','SDitH-CAT-5-Short','5','307','132','14121'])
 
+    """
+    TODO MQOM
+    Security Level L1
+    Instance	Public Key (bytes)	Secret Key (bytes)	Signature (bytes)
+    MQOM2-L1-gf2-short-3r	52	72	2868
+    MQOM2-L1-gf2-short-5r	52	72	2820
+    MQOM2-L1-gf16-short-3r	60	88	3060
+    MQOM2-L1-gf16-short-5r	60	88	2916
+    MQOM2-L1-gf256-short-3r	80	128	3540
+    MQOM2-L1-gf256-short-5r	80	128	3156
+
+    Security Level L3
+    Instance	Public Key (bytes)	Secret Key (bytes)	Signature (bytes)
+    MQOM2-L3-gf2-short-3r	78	108	6388
+    MQOM2-L3-gf2-short-5r	78	108	6280
+    MQOM2-L3-gf16-short-3r	90	132	6820
+    MQOM2-L3-gf16-short-5r	90	132	6496
+    MQOM2-L3-gf256-short-3r	120	192	7900
+    MQOM2-L3-gf256-short-5r	120	192	7036
+
+    Security Level L5
+    Instance	Public Key (bytes)	Secret Key (bytes)	Signature (bytes)
+    MQOM2-L5-gf2-short-3r	104	144	11764
+    MQOM2-L5-gf2-short-5r	104	144	11564
+    MQOM2-L5-gf16-short-3r	122	180	12664
+    MQOM2-L5-gf16-short-5r	122	180	12014
+    MQOM2-L5-gf256-short-3r	160	256	14564
+    MQOM2-L5-gf256-short-5r	160	256	12964
+
+
+    Prefixes for each:
+    mqom2l1gf2r3s
+    mqom2l1gf2r5s
+    mqom2l1gf16r3s
+    mqom2l1gf16r5s
+    mqom2l1gf256r3s
+    mqom2l1gf256r5s
+    mqom2l3gf2r3s
+    mqom2l3gf2r5s
+    mqom2l3gf16r3s
+    mqom2l3gf16r5s
+    mqom2l3gf256r3s
+    mqom2l3gf256r5s
+    mqom2l5gf2r3s
+    mqom2l5gf2r5s
+    mqom2l5gf16r3s
+    mqom2l5gf16r5s
+    mqom2l5gf256r3s
+    mqom2l5gf256r5s
+
+    actual algorithm ids:
+    mqom2cat1gf2shortr3
+    mqom2cat1gf2shortr5
+    mqom2cat1gf16shortr3
+    mqom2cat1gf16shortr5
+    mqom2cat1gf256shortr3
+    mqom2cat1gf256shortr5
+    mqom2cat3gf2shortr3
+    mqom2cat3gf2shortr5
+    mqom2cat3gf16shortr3
+    mqom2cat3gf16shortr5
+    mqom2cat3gf256shortr3
+    mqom2cat3gf256shortr5
+    mqom2cat5gf2shortr3
+    mqom2cat5gf2shortr5
+    mqom2cat5gf16shortr3
+    mqom2cat5gf16shortr5
+    mqom2cat5gf256shortr3
+    mqom2cat5gf256shortr5
+    """
+
+    run_benchmark(out_csv, 'mqom2l1gf2r3s', ['mqom2cat1gf2shortr3','MQOM2 L1 GF2 short r3','1','72','52','2868'])
+    run_benchmark(out_csv, 'mqom2l1gf2r5s', ['mqom2cat1gf2shortr5','MQOM2 L1 GF2 short r5','5','72','52','2868'])
+    run_benchmark(out_csv, 'mqom2l1gf16r3s', ['mqom2cat1gf16shortr3','MQOM2 L1 GF16 short r3','1','88','60','3060'])
+    run_benchmark(out_csv, 'mqom2l1gf16r5s', ['mqom2cat1gf16shortr5','MQOM2 L1 GF16 short r5','5','88','60','3060'])
+    run_benchmark(out_csv, 'mqom2l1gf256r3s', ['mqom2cat1gf256shortr3','MQOM2 L1 GF256 short r3','1','128','80','3540'])
+    run_benchmark(out_csv, 'mqom2l1gf256r5s', ['mqom2cat1gf256shortr5','MQOM2 L1 GF256 short r5','5','128','80','3540'])
+    run_benchmark(out_csv, 'mqom2l3gf2r3s', ['mqom2cat3gf2shortr3','MQOM2 L3 GF2 short r3','3','108','78','6388'])
+    run_benchmark(out_csv, 'mqom2l3gf2r5s', ['mqom2cat3gf2shortr5','MQOM2 L3 GF2 short r5','5','108','78','6280'])
+    run_benchmark(out_csv, 'mqom2l3gf16r3s', ['mqom2cat3gf16shortr3','MQOM2 L3 GF16 short r3','3','132','90','6820'])
+    run_benchmark(out_csv, 'mqom2l3gf16r5s', ['mqom2cat3gf16shortr5','MQOM2 L3 GF16 short r5','5','132','90','6496'])
+    run_benchmark(out_csv, 'mqom2l3gf256r3s', ['mqom2cat3gf256shortr3','MQOM2 L3 GF256 short r3','3','192','120','7900'])
+    run_benchmark(out_csv, 'mqom2l3gf256r5s', ['mqom2cat3gf256shortr5','MQOM2 L3 GF256 short r5','5','192','120','7036'])
+    run_benchmark(out_csv, 'mqom2l5gf2r3s', ['mqom2cat5gf2shortr3','MQOM2 L5 GF2 short r3','5','144','104','11764'])
+    run_benchmark(out_csv, 'mqom2l5gf2r5s', ['mqom2cat5gf2shortr5','MQOM2 L5 GF2 short r5','5','144','104','11564'])
+    run_benchmark(out_csv, 'mqom2l5gf16r3s', ['mqom2cat5gf16shortr3','MQOM2 L5 GF16 short r3','5','180','122','12664'])
+    run_benchmark(out_csv, 'mqom2l5gf16r5s', ['mqom2cat5gf16shortr5','MQOM2 L5 GF16 short r5','5','180','122','12014'])
+    run_benchmark(out_csv, 'mqom2l5gf256r3s', ['mqom2cat5gf256shortr3','MQOM2 L5 GF256 short r3','5','256','160','14564'])
+    run_benchmark(out_csv, 'mqom2l5gf256r5s', ['mqom2cat5gf256shortr5','MQOM2 L5 GF256 short r5','5','256','160','12964'])
+
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
     
     # We are not testing the "fast" variants of SPHINCS+
