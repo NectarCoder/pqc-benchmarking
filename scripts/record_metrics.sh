@@ -42,6 +42,9 @@ run_time() {
     # taskset - set single core processing (disable parallelism)
     # perf - collect timing information & cpu cycles
     { taskset -c 0 perf stat bash -c "$cmd"; } 2> "$TIMING_RESULTS_DIR/$outfile"
+    # If default perf is not available due to kernel version mismatch, set perf binary directly.
+    # Run `find /usr/lib/linux-tools-* -maxdepth 1 -type f -name perf` to find the correct path.
+    # { taskset -c 0 /usr/lib/linux-tools-6.8.0-85/perf stat bash -c "$cmd"; } 2> "$TIMING_RESULTS_DIR/$outfile"
 }
 
 # Save memory usage (maximum resident set size) of a command to a results file

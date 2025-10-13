@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'uoviii', ['OV_III', 'UOV-III', '3', '2269788', '1225461', '200'])
     # run_benchmark(out_csv, 'uovv', ['OV_V', 'UOV-V', '5', '5306172', '2869461', '260'])
 
-    # NEEDS REDO
+    # DONE
     # run_benchmark(out_csv, 'hawk512', ['hawk512','HAWK 512','1','184','1024','555'])
     # run_benchmark(out_csv, 'hawk1024', ['hawk1024','HAWK 1024','5','360','2440','1221'])
     
@@ -201,6 +201,7 @@ if __name__ == "__main__":
     mqom2cat5gf256shortr5
     """
 
+    # NOT DONE
     run_benchmark(out_csv, 'mqom2l1gf2r3s', ['mqom2cat1gf2shortr3','MQOM2 L1 GF2 short r3','1','72','52','2868'])
     run_benchmark(out_csv, 'mqom2l1gf2r5s', ['mqom2cat1gf2shortr5','MQOM2 L1 GF2 short r5','5','72','52','2868'])
     run_benchmark(out_csv, 'mqom2l1gf16r3s', ['mqom2cat1gf16shortr3','MQOM2 L1 GF16 short r3','1','88','60','3060'])
