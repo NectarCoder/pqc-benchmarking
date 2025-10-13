@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'dilithium3', ['mldsa65','ML-DSA/Dilithium 3', '3','4032','1952','3309'])
     # run_benchmark(out_csv, 'dilithium5', ['mldsa87','ML-DSA/Dilithium 5', '5','4896','2592','4627'])
 
-    # NOT DONE
+    # DONE
     # run_benchmark(out_csv, 'sphincssha1s', ['slh-dsa-sha2-128s','SLH-DSA/SPHINCS+ SHA 128s', '1','64','32','7856'])
     # run_benchmark(out_csv, 'sphincssha3s', ['slh-dsa-sha2-192s','SLH-DSA/SPHINCS+ SHA 192s', '3','96','48','16224'])
     # run_benchmark(out_csv, 'sphincssha5s', ['slh-dsa-sha2-256s','SLH-DSA/SPHINCS+ SHA 256s', '5','128','64','29792'])
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'mayo3', ['mayo3','MAYO 3','3','32','2986','681'])
     # run_benchmark(out_csv, 'mayo5', ['mayo5','MAYO 5','5','40','5554','964'])
 
-    # NOT DONE
+    # DONE
     # run_benchmark(out_csv, 'crossrsdp1s', ['CROSSrsdp128small','CROSS-RSDP-128-Small','1','32','77','12432'])
     # run_benchmark(out_csv, 'crossrsdp3s', ['CROSSrsdp192small','CROSS-RSDP-192-Small','3','48','115','28391'])
     # run_benchmark(out_csv, 'crossrsdp5s', ['CROSSrsdp256small','CROSS-RSDP-256-Small','5','64','153','50818'])
@@ -125,10 +125,10 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'mirath5ashort', ['mirathtcith5ashort','MIRATH-TCITH-5a-Short','5','64','147','13091'])
     # run_benchmark(out_csv, 'mirath5bshort', ['mirathtcith5bshort','MIRATH-TCITH-5b-Short','5','64','112','12229'])
 
-    # NOT DONE
-    run_benchmark(out_csv, 'sdithcat1short', ['sdithcat1short','SDitH-CAT-1-Short','1','163','70','3705'])
-    run_benchmark(out_csv, 'sdithcat3short', ['sdithcat3short','SDitH-CAT-3-Short','3','232','98','7964'])
-    run_benchmark(out_csv, 'sdithcat5short', ['sdithcat5short','SDitH-CAT-5-Short','5','307','132','14121'])
+    # DONE
+    # run_benchmark(out_csv, 'sdithcat1short', ['sdithcat1short','SDitH-CAT-1-Short','1','163','70','3705'])
+    # run_benchmark(out_csv, 'sdithcat3short', ['sdithcat3short','SDitH-CAT-3-Short','3','232','98','7964'])
+    # run_benchmark(out_csv, 'sdithcat5short', ['sdithcat5short','SDitH-CAT-5-Short','5','307','132','14121'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
     
