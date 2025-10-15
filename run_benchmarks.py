@@ -117,7 +117,7 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'ryde3s', ['ryde3s','RYDE 3-Short','3','48','101','7064'])
     # run_benchmark(out_csv, 'ryde5s', ['ryde5s','RYDE 5-Short','5','64','132','12607'])
     
-    # NOT DONE
+    # PARTIALLY DONE (only mirath1ashort and mirath1bshort complete)
     # run_benchmark(out_csv, 'mirath1ashort', ['mirathtcith1ashort','MIRATH-TCITH-1a-Short','1','32','73','3182'])
     # run_benchmark(out_csv, 'mirath1bshort', ['mirathtcith1bshort','MIRATH-TCITH-1b-Short','1','32','57','2990'])
     # run_benchmark(out_csv, 'mirath3ashort', ['mirathtcith3ashort','MIRATH-TCITH-3a-Short','3','48','107','7456'])
@@ -152,32 +152,21 @@ if __name__ == "__main__":
     run_benchmark(out_csv, 'mqom2l5gf256r5s', ['mqom2cat5gf256shortr5','MQOM2 L5 GF256 short r5','5','256','160','12964'])
     """
 
-    """
-    LESS-252-192    -> Public: 13940 bytes, Secret: 32 bytes
-    LESS-252-68     -> Public: 41788 bytes, Secret: 32 bytes
-    LESS-252-45     -> Public: 97484 bytes, Secret: 32 bytes
-    LESS-400-220    -> Public: 35074 bytes, Secret: 48 bytes
-    LESS-400-102    -> Public: 105174 bytes, Secret: 48 bytes
-    LESS-548-345    -> Public: 65793 bytes, Secret: 64 bytes
-    LESS-548-137    -> Public: 197315 bytes, Secret: 64 bytes
-    """
-    """
-    -----------------------------------------
-    Retrieving Maximum Signature Sizes...
-    -----------------------------------------
-    LESS-252-192    -> 2625 bytes
-    LESS-252-68     -> 1825 bytes
-    LESS-252-45     -> 1329 bytes
-    LESS-400-220    -> 6329 bytes
-    LESS-400-102    -> 4131 bytes
-    LESS-548-345    -> 10680 bytes
-    LESS-548-137    -> 7436 bytes
-    -----------------------------------------
-    """
     # NOT DONE
-    
+    # run_benchmark(out_csv, 'less252192', ['less252192','LESS 252-192','1','32','13940','2625'])
+    # run_benchmark(out_csv, 'less25268',  ['less25268','LESS 252-68','1','32','41788','1825'])
+    # run_benchmark(out_csv, 'less25245',  ['less25245','LESS 252-45','1','32','97484','1329'])
+    # run_benchmark(out_csv, 'less400220', ['less400220','LESS 400-220','3','48','35074','6329'])
+    # run_benchmark(out_csv, 'less400102', ['less400102','LESS 400-102','3','48','105174','4131'])
+    # run_benchmark(out_csv, 'less548345', ['less548345','LESS 548-345','5','64','65793','10680'])
+    # run_benchmark(out_csv, 'less548137', ['less548137','LESS 548-137','5','64','197315','7436'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
+
+
+
+
+    "__________The following algorithms are not being tested currently for various reasons. __________"
     
     # We are not testing the "fast" variants of SPHINCS+
     # run_benchmark(out_csv, 'sphincssha1f', ['slh-dsa-sha2-128f','SPHINCS+ SHA 128f', '1','84','50','17088'])
