@@ -130,7 +130,7 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'sdithcat3short', ['sdithcat3short','SDitH-CAT-3-Short','3','232','98','7964'])
     # run_benchmark(out_csv, 'sdithcat5short', ['sdithcat5short','SDitH-CAT-5-Short','5','307','132','14121'])
 
-    # NOT DONE
+    # DONE
     """
     run_benchmark(out_csv, 'mqom2l1gf2r3s', ['mqom2cat1gf2shortr3','MQOM2 L1 GF2 short r3','1','72','52','2868'])
     run_benchmark(out_csv, 'mqom2l1gf2r5s', ['mqom2cat1gf2shortr5','MQOM2 L1 GF2 short r5','5','72','52','2868'])
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     run_benchmark(out_csv, 'mqom2l5gf256r5s', ['mqom2cat5gf256shortr5','MQOM2 L5 GF256 short r5','5','256','160','12964'])
     """
 
-    # NOT DONE
+    # DONE
     # run_benchmark(out_csv, 'less252192', ['less252192','LESS 252-192','1','32','13940','2625'])
     # run_benchmark(out_csv, 'less25268',  ['less25268','LESS 252-68','1','32','41788','1825'])
     # run_benchmark(out_csv, 'less25245',  ['less25245','LESS 252-45','1','32','97484','1329'])
