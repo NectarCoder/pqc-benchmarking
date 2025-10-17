@@ -173,6 +173,16 @@ Once all prerequisites are met, you can run the benchmarks Python script like so
 ./run_benchmarks.py
 ```
 
+If you want to run the benchmarks headless, use the `benchmarks.sh` script:  
+
+```bash
+# From the project root:
+./benchmarks.sh
+# Will output:
+# - run_benchmarks.out file with stdout
+# - run_benchmarks.err file with stderr
+```
+
 Once benchmarks are complete, results will be available in `results/benchmarks.csv`.  
 
 You can clean all built files with:  
