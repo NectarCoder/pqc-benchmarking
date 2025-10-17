@@ -161,6 +161,20 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'less548345', ['less548345','LESS 548-345','5','64','65793','10680'])
     # run_benchmark(out_csv, 'less548137', ['less548137','LESS 548-137','5','64','197315','7436'])
 
+    # NOT DONE
+    run_benchmark(out_csv, 'qruov1q127L3v156m54', ['qruov1q127L3v156m54','QR-UOV Q127,V156, M54, L3','1','32','24256','200'])
+    run_benchmark(out_csv, 'qruov1q7L10v740m100', ['qruov1q7L10v740m100','QR-UOV Q7,V740, M100, L10','1','32','20641','331'])
+    run_benchmark(out_csv, 'qruov1q31L3v165m60', ['qruov1q31L3v165m60','QR-UOV Q31,V165, M60, L3','1','32','23641','157'])
+    run_benchmark(out_csv, 'qruov1q31L10v600m70', ['qruov1q31L10v600m70','QR-UOV Q31,V600, M70, L10','1','32','12266','435'])
+    run_benchmark(out_csv, 'qruov3q127L3v228m78', ['qruov3q127L3v228m78','QR-UOV Q127,V228, M78, L3','3','48','71892','292'])
+    run_benchmark(out_csv, 'qruov3q7L10v1100m140', ['qruov3q7L10v1100m140','QR-UOV Q7,V1100, M140, L10','3','48','55149','489'])
+    run_benchmark(out_csv, 'qruov3q31L3v246m87', ['qruov3q31L3v246m87','QR-UOV Q31,V246, M87, L3','3','48','70984','233'])
+    run_benchmark(out_csv, 'qruov3q31L10v890m100', ['qruov3q31L10v890m100','QR-UOV Q31,V890, M100, L10','3','48','34399','643'])
+    run_benchmark(out_csv, 'qruov5q127L3v306m105', ['qruov5q127L3v306m105','QR-UOV Q127,V306, M105, L3','5','64','173676','392'])
+    run_benchmark(out_csv, 'qruov5q7L10v1490m190', ['qruov5q7L10v1490m190','QR-UOV Q7,V1490, M190, L10','5','64','135407','662'])
+    run_benchmark(out_csv, 'qruov5q31L3v324m114', ['qruov5q31L3v324m114','QR-UOV Q31,V324, M114, L3','5','64','158421','306'])
+    run_benchmark(out_csv, 'qruov5q31L10v1120m120', ['qruov5q31L10v1120m120','QR-UOV Q31,V1120, M120, L10','5','64','58532','807'])
+
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
 
     
