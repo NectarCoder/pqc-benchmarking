@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
+# Standardized stub for family tests
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-. "$SCRIPT_DIR/colors.sh"
 
-printf_info() { printf "%b[INFO]%b %s\n" "$COLOR_INFO" "$COLOR_RESET" "$*"; }
+VARIANTS=(
+	sqisign353
+	sqisign529
+	sqisign701
+)
 
-printf_info "algorithm tests todo"
-exit 0
+exec "$SCRIPT_DIR/test_algorithm_family.sh" SQISIGN "${VARIANTS[@]}"
