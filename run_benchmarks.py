@@ -161,7 +161,7 @@ if __name__ == "__main__":
     # run_benchmark(out_csv, 'less548345', ['less548345','LESS 548-345','5','64','65793','10680'])
     # run_benchmark(out_csv, 'less548137', ['less548137','LESS 548-137','5','64','197315','7436'])
 
-    # NOT 
+    # NOT DONE
     """
     run_benchmark(out_csv, 'qruov1q127L3v156m54', ['qruov1q127L3v156m54','QR-UOV Q127,V156, M54, L3','1','32','24256','200'])
     run_benchmark(out_csv, 'qruov1q7L10v740m100', ['qruov1q7L10v740m100','QR-UOV Q7,V740, M100, L10','1','32','20641','331'])
@@ -178,9 +178,9 @@ if __name__ == "__main__":
     """
 
     # NOT DONE
-    run_benchmark(out_csv, 'sqisign353', ['sqisign353','SQISign 353 NIST-I','1','65','353','148'])
-    run_benchmark(out_csv, 'sqisign529', ['sqisign529','SQISign 529 NIST-III','3','97','529','224'])
-    run_benchmark(out_csv, 'sqisign701', ['sqisign701','SQISign 701 NIST-V','5','129','701','292'])
+    # run_benchmark(out_csv, 'sqisign353', ['sqisign353','SQISign 353 NIST-I','1','65','353','148'])
+    # run_benchmark(out_csv, 'sqisign529', ['sqisign529','SQISign 529 NIST-III','3','97','529','224'])
+    # run_benchmark(out_csv, 'sqisign701', ['sqisign701','SQISign 701 NIST-V','5','129','701','292'])
 
     print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
 

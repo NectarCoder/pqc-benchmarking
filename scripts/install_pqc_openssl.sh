@@ -11,7 +11,11 @@ rm -rf oqs-provider; git clone --branch 0.10.0-round2-dev https://github.com/Nec
 cd oqs-provider
 
 # Clone liboqs - custom fork for more algorithms
-rm -rf liboqs; git clone --branch ds-0.14.0-round2-dev https://github.com/NectarCoder/liboqs.git
+rm -rf liboqs; git clone https://github.com/NectarCoder/liboqs.git
+cd liboqs
+git checkout ds-0.14.0-round2-dev
+git pull
+cd ..
 # git clone --branch ds-0.14.0-release https://github.com/open-quantum-safe/liboqs.git
 
 # Only build generic C implementations, no assembly/compiler optimizations based on hardware
@@ -23,6 +27,7 @@ export CMAKE_PARAMS="${CMAKE_PARAMS:+$CMAKE_PARAMS } -DOQS_DIST_BUILD=OFF -DOQS_
 export CFLAGS="-O1"
 export CXXFLAGS="$CFLAGS" 
 export OSSL_CONFIG="no-asm"
+# export OQS_LIBJADE_BUILD=ON
 
 # Generate/enable algorithms for openssl to access
 export LIBOQS_SRC_DIR="$(pwd)/liboqs"

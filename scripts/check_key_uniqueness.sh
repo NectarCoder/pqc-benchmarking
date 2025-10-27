@@ -89,6 +89,9 @@ algorithms=(
     "qruov5q7L10v1490m190"
     "qruov5q31L3v324m114"
     "qruov5q31L10v1120m120"
+    "sqisign353"
+    "sqisign529"
+    "sqisign701"
 )
 
 # Arrays to hold results
