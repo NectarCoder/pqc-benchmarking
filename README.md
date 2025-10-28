@@ -177,7 +177,7 @@ If you want to run the benchmarks headless, use the `benchmarks.sh` script:
 
 ```bash
 # From the project root:
-./benchmarks.sh
+./run_benchmarks_headless.sh
 # Will output:
 # - run_benchmarks.out file with stdout
 # - run_benchmarks.err file with stderr
