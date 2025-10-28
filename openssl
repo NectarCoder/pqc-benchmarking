@@ -11,6 +11,11 @@ OPENSSL_BIN="$REPO_ROOT/oqs-provider/.local/bin/openssl"
 # is available, and we also copy oqsprovider.so there in the install script.
 export OPENSSL_MODULES="$REPO_ROOT/oqs-provider/.local/lib64/ossl-modules"
 
+# Ensure the locally-built libssl/libcrypto are found by the dynamic loader when
+# invoking the local OpenSSL binary so users don't have to set LD_LIBRARY_PATH
+# manually before running ./openssl.
+export LD_LIBRARY_PATH="$REPO_ROOT/oqs-provider/.local/lib:$REPO_ROOT/oqs-provider/.local/lib64:${LD_LIBRARY_PATH:-}"
+
 if [ -x "$OPENSSL_BIN" ]; then
   exec "$OPENSSL_BIN" "$@"
 else

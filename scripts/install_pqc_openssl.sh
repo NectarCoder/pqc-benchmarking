@@ -11,8 +11,7 @@ rm -rf oqs-provider; git clone --branch 0.10.0-round2-dev https://github.com/Nec
 cd oqs-provider
 
 # Clone liboqs - custom fork for more algorithms
-rm -rf liboqs; git clone --branch ds-0.14.0-round2-dev https://github.com/NectarCoder/liboqs.git
-# git clone --branch ds-0.14.0-release https://github.com/open-quantum-safe/liboqs.git
+rm -rf liboqs; git clone --branch ds-0.14.0-release https://github.com/open-quantum-safe/liboqs.git
 
 # Only build generic C implementations, no assembly/compiler optimizations based on hardware
 # (generic CPU runtime efficiency)
@@ -22,8 +21,6 @@ export CMAKE_PARAMS="${CMAKE_PARAMS:+$CMAKE_PARAMS } -DOQS_DIST_BUILD=OFF -DOQS_
 -DCMAKE_C_FLAGS=\"-O1\""
 export CFLAGS="-O1"
 export CXXFLAGS="$CFLAGS" 
-
-# Tell OpenSSL configure to avoid assembly
 export OSSL_CONFIG="no-asm"
 
 # Generate/enable algorithms for openssl to access
@@ -33,11 +30,14 @@ python3 oqs-template/generate.py
 # Run the fullbuild script to setup the benchmarking environment
 echo; echo "***** RUNNING OQS-PROVIDER FULLBUILD SCRIPT *****"
 chmod +x scripts/fullbuild.sh
-OPENSSL_BRANCH=openssl-3.5.4 MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -f
+OPENSSL_BRANCH=openssl-3.6.0 MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -f
 # OPENSSL_BRANCH=openssl-3.5 LIBOQS_BRANCH=ds-0.14.0-release MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -f
 # OPENSSL_BRANCH=master LIBOQS_BRANCH=main MAKE_PARAMS="-j$(nproc)" scripts/fullbuild.sh -F
 echo; echo; echo "***** OQS-PROVIDER FULLBUILD SCRIPT COMPLETE *****"
 echo "***** VERIFY THAT NO ERRORS HAVE OCCURRED *****"; echo; echo;
+
+# Ensure the dynamic loader can find locally-installed OpenSSL libs (lib vs lib64)
+export LD_LIBRARY_PATH="$PWD/.local/lib:$PWD/.local/lib64:${LD_LIBRARY_PATH:-}"
 
 # Verify OpenSSL installation succeeded
 echo "Verifying OpenSSL installation..."
@@ -45,7 +45,14 @@ echo "Verifying OpenSSL installation..."
 
 # Verify liboqs installation succeeded
 echo "Verifying liboqs installation..."
-grep '^Version:' ./.local/lib64/pkgconfig/liboqs.pc; echo;
+if [ -f ./.local/lib64/pkgconfig/liboqs.pc ]; then
+    grep '^Version:' ./.local/lib64/pkgconfig/liboqs.pc
+elif [ -f ./.local/lib/pkgconfig/liboqs.pc ]; then
+    grep '^Version:' ./.local/lib/pkgconfig/liboqs.pc
+else
+    echo "liboqs pkgconfig not found in .local/lib64 or .local/lib"
+fi
+echo;
 
 # Point OpenSSL to the installed modules directory (contains default provider)
 export OPENSSL_MODULES=$PWD/.local/lib64/ossl-modules

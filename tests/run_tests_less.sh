@@ -3,9 +3,17 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-. "$SCRIPT_DIR/colors.sh"
 
-printf_info() { printf "%b[INFO]%b %s\n" "$COLOR_INFO" "$COLOR_RESET" "$*"; }
+# LESS family test wrapper — delegates to the generic harness.
 
-printf_info "algorithm tests todo"
-exit 0
+VARIANTS=(
+	less252192
+	less25268
+	less25245
+	less400220
+	less400102
+	less548345
+	less548137
+)
+
+exec "$SCRIPT_DIR/test_algorithm_family.sh" LESS "${VARIANTS[@]}"

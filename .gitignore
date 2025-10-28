@@ -5,6 +5,7 @@
 *.der
 *.key
 *.bin
+*.err
 
 # Timing data
 results/*

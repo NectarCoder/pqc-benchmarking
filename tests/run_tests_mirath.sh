@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 
+# MIRATH family test wrapper — delegates to the generic harness.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-. "$SCRIPT_DIR/colors.sh"
 
-printf_info() { printf "%b[INFO]%b %s\n" "$COLOR_INFO" "$COLOR_RESET" "$*"; }
+VARIANTS=(
+	mirathtcith1ashort
+	mirathtcith1bshort
+	mirathtcith3ashort
+	mirathtcith3bshort
+	mirathtcith5ashort
+	mirathtcith5bshort
+)
 
-printf_info "algorithm tests todo"
-exit 0
+exec "$SCRIPT_DIR/test_algorithm_family.sh" MIRATH "${VARIANTS[@]}"
