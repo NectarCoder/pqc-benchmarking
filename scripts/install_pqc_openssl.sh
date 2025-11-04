@@ -11,7 +11,8 @@ rm -rf oqs-provider; git clone --branch 0.10.0-round2-dev https://github.com/Nec
 cd oqs-provider
 
 # Clone liboqs - custom fork for more algorithms
-rm -rf liboqs; git clone --branch ds-0.14.0-release https://github.com/open-quantum-safe/liboqs.git
+rm -rf liboqs; git clone --branch ds-0.14.0-round2-dev https://github.com/NectarCoder/liboqs.git
+#rm -rf liboqs; git clone --branch ds-0.14.0-release https://github.com/open-quantum-safe/liboqs.git
 
 # Only build generic C implementations, no assembly/compiler optimizations based on hardware
 # (generic CPU runtime efficiency)
