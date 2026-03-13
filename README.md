@@ -1,6 +1,8 @@
-# PQC Round 2 Digital Signature Algorithm Benchmarking  
+# NIST 'Round 2' Additional Digital Signature Performance Evaluation  
 
-Performance benchmarks on the fourteen digital-signature algorithms submitted to *NIST's Post-Quantum Cryptography Round 2 — Additional Digital Signature Schemes* [^1]. This repo builds upon concepts from previous works [^3], [^4] and aims to provide a way to analyze the performance of these algorithms in the context of public key infrastructure (PKI).  
+Performance benchmarks on the fourteen 'Round 2' additional digital-signature algorithms submitted to *NIST's Post-Quantum Cryptography Round 2 — Additional Digital Signature Schemes* [^1], conducted to analyze their performance in the context of public key infrastructure (PKI).  
+
+Jump to [Building & Benchmarking](#building--benchmarking) for instructions on how to utilize this benchmarking setup.
 
 ## Project Context: Algorithm & Metrics
 
@@ -32,7 +34,7 @@ In order to provide a comparative baseline, the current 3 standardized schemes [
 ### What are the benchmarks?  
 
 The benchmarks focus on measuring the performance of each algorithm version in terms of key generation, request, signing, and verification times.  
-For each metric, we respectively note the algorithm version and the NIST security level (1, 2, 3, 4, 5) [^5].
+For each metric, we respectively note the algorithm version and the NIST security level (1, 2, 3, 4, 5) [^3].
 In general, the objective is to find:  
 
 - Time taken to:
@@ -239,10 +241,6 @@ NO_COLOR=1 ./tests/run_tests.sh CROSS
 
 [^1]: List of Round 2 Digital Signature Candidates: [Round 2 Additional Signatures](https://csrc.nist.gov/Projects/pqc-dig-sig/round-2-additional-signatures)  
 
-[^2]: Current standardized PQC Signature Schemes: [NIST Releases First 3 Finalized Post-Quantum Encryption Standards](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards)  
+[^2]: Current standardized PQC Signature Schemes: [NIST Releases First 3 Finalized Post-Quantum Encryption Standards](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards)   
 
-[^3]: M. Raavi, P. Chandramouli, S. Wuthier, X. Zhou, and S.-Y. Chang, "Performance Characterization of Post-Quantum Digital Certificates," 2021 International Conference on Computer Communications and Networks (ICCCN), Jul. 2021, doi: [https://doi.org/10.1109/icccn52240.2021.9522179](https://doi.org/10.1109/icccn52240.2021.9522179).  
-
-[^4]: M. Raavi, Q. Khan, S. Wuthier, P. Chandramouli, Y. Balytskyi, and S.-Y. Chang, “Security and Performance Analyses of Post-Quantum Digital Signature Algorithms and Their TLS and PKI Integrations,” Cryptography, vol. 9, no. 2, p. 38, Jun. 2025, doi: [https://doi.org/10.3390/cryptography9020038](https://doi.org/10.3390/cryptography9020038).  
-
-[^5]: By algorithm version, we mean the specific level of the algorithm, e.g. for Dilithium (which is one algorithm): p256_mldsa44 (level 2), p384_mldsa65 (level 3), & p521_mldsa87 (level 5) - each with different security levels. Also see: NIST Security Levels: [PQC Security (Evaluation Criteria)](https://csrc.nist.gov/projects/post-quantum-cryptography/post-quantum-cryptography-standardization/evaluation-criteria/security-(evaluation-criteria))
+[^3]: By algorithm version, we mean the specific level of the algorithm, e.g. for Dilithium (which is one algorithm): p256_mldsa44 (level 2), p384_mldsa65 (level 3), & p521_mldsa87 (level 5) - each with different security levels. Also see: NIST Security Levels: [PQC Security (Evaluation Criteria)](https://csrc.nist.gov/projects/post-quantum-cryptography/post-quantum-cryptography-standardization/evaluation-criteria/security-(evaluation-criteria))  
