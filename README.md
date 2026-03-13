@@ -1,8 +1,13 @@
-# NIST 'Round 2' Additional Digital Signature Performance Evaluation  
+# NIST 'Round 2' Additional Digital Signatures Performance Evaluation  
 
 Performance benchmarks on the fourteen 'Round 2' additional digital-signature algorithms submitted to *NIST's Post-Quantum Cryptography Round 2 — Additional Digital Signature Schemes* [^1], conducted to analyze their performance in the context of public key infrastructure (PKI).  
 
-Jump to [Building & Benchmarking](#building--benchmarking) for instructions on how to utilize this benchmarking setup.
+Jump to [Building & Benchmarking](#building--benchmarking) for instructions on how to utilize this benchmarking setup.  
+
+> [!NOTE]  
+> This repository uses our own forks of liboqs and oqs-provider, cloned during inital setup. They can be found at the following links:
+> - liboqs fork: [https://github.com/NectarCoder/liboqs/tree/ds-0.14.0-round2-dev](https://github.com/NectarCoder/liboqs/tree/ds-0.14.0-round2-dev)
+> - oqs-provider fork: [https://github.com/NectarCoder/oqs-provider/tree/0.10.0-round2-dev](https://github.com/NectarCoder/oqs-provider/tree/0.10.0-round2-dev)
 
 ## Project Context: Algorithm & Metrics
 
@@ -130,7 +135,10 @@ Based on these metrics, the actual benchmarks are calculated ***(over 1000 attem
 ### Prerequisites
 
 This project uses OpenSSL, liboqs, and oqs-provider; these must be setup before running benchmarks.  
-**The following instructions are designed for a <u>Bash shell environment on Ubuntu (22-24)</u>.**  
+
+> [!WARNING]
+> These instructions are designed for a <u>Bash shell environment on Ubuntu (22-24)</u>. Running them on other platforms may require manual adjustments or additional dependencies.
+
 
 1. Setup Dependencies  
 From the project root, run [scripts/install_dependencies.sh](/scripts/install_dependencies.sh):  
@@ -158,8 +166,10 @@ From the project root, run [scripts/set_perf_level.sh](/scripts/set_perf_level.s
 ./scripts/set_perf_level.sh
 ```
 
-Since this is a general security risk, you may want to revert this change after benchmarking.  
-Run the following command to revert:  
+> [!WARNING]
+> Setting perf paranoia to 1 lowers kernel security controls; do not leave this enabled on shared or production systems.
+> 
+> To revert after benchmarking, run:
 
 ```bash
 # sudo access is required
@@ -168,7 +178,11 @@ Run the following command to revert:
 
 ### Benchmarking
 
-Once all prerequisites are met, you can run the benchmarks Python script like so:  
+> [!IMPORTANT]
+> Make sure you have run the dependency install and OpenSSL/oqs setup scripts before running benchmarks.  
+> Skipping these steps can lead to failures or missing results.  
+
+You can run the benchmarks Python script like so:  
 
 ```bash
 # From the project root:
@@ -186,6 +200,9 @@ If you want to run the benchmarks headless, use the `benchmarks.sh` script:
 ```
 
 Once benchmarks are complete, results will be available in `results/benchmarks.csv`.  
+
+> [!TIP]
+> For consistent benchmarking results, run the scripts on an idle machine and avoid running other CPU-intensive tasks during a benchmark run.
 
 You can clean all built files with:  
 
