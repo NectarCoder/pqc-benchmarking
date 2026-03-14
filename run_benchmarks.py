@@ -134,8 +134,14 @@ if __name__ == "__main__":
     # PERK
     """
     run_benchmark(out_csv, 'perkak1short', ['perkak1short','PERK-AES-KECCAK-1-short','1','120','104','3473'])
+    run_benchmark(out_csv, 'perkaesaes1short', ['perkaesaes1short','PERK-AES-AES-1-short','1','120','104','3473'])
+    run_benchmark(out_csv, 'perkkeccakkeccak1short', ['perkkeccakkeccak1short','PERK-KECCAK-KECCAK-1-short','1','120','104','3473'])
     run_benchmark(out_csv, 'perkak3short', ['perkak3short','PERK-AES-KECCAK-3-short','3','175','151','8311'])
+    run_benchmark(out_csv, 'perkaesaes3short', ['perkaesaes3short','PERK-AES-AES-3-short','3','175','151','8311'])
+    run_benchmark(out_csv, 'perkkeccakkeccak3short', ['perkkeccakkeccak3short','PERK-KECCAK-KECCAK-3-short','3','175','151','8311'])
     run_benchmark(out_csv, 'perkak5short', ['perkak5short','PERK-AES-KECCAK-5-short','5','227','195','14830'])
+    run_benchmark(out_csv, 'perkaesaes5short', ['perkaesaes5short','PERK-AES-AES-5-short','5','227','195','14830'])
+    run_benchmark(out_csv, 'perkkeccakkeccak5short', ['perkkeccakkeccak5short','PERK-KECCAK-KECCAK-5-short','5','227','195','14830'])
     """
 
     # RYDE
