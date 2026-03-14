@@ -7,12 +7,24 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'scripts-py'))
 from csv_builder import init_benchmarks_csv, add_benchmarks  # type: ignore
 from calculate_averages import calculate_averages, calculate_medians  # type: ignore
 
+# ANSI color codes for terminal output
+def _colors_enabled():
+    if os.environ.get("NO_COLOR"):
+        return False
+    return sys.stdout.isatty()
+
+# Helper function to color terminal output if supported
+def _color(text, code):
+    if _colors_enabled():
+        return f"\033[{code}m{text}\033[0m"
+    return text
+
 """
 Run benchmarks for various cryptographic algorithms and store results in a CSV file.
 Each algorithm is benchmarked for keypair generation, CSR creation, certificate creation, and signature verification.
 """
 def run_benchmark(out_csv, prefix, static_items, runs=1): # Needs to be changed to runs=1000
-    print(f"\n\033[93mBenchmarking {static_items[1]}...\033[0m")
+    print(f"\n{_color(f'Benchmarking {static_items[1]}...', '93')}")
     avg_kp, avg_csr, avg_cert, avg_ver = calculate_averages(prefix, runs=runs)
     med_kp, med_csr, med_cert, med_ver = calculate_medians(prefix, runs=runs)
     add_benchmarks(
@@ -21,7 +33,7 @@ def run_benchmark(out_csv, prefix, static_items, runs=1): # Needs to be changed 
         [avg_kp, avg_csr, avg_cert, avg_ver],
         [med_kp, med_csr, med_cert, med_ver]
     )
-    print(f"\n\033[92m{static_items[1]} Benchmarking Complete. See metrics below:\033[0m")
+    print(f"\n{_color(f'{static_items[1]} Benchmarking Complete. See metrics below:', '92')}")
     print("Metrics Order: [CPU Cycles, Real time, CPU time, Memory/Peak RSS]")
     for label, avg, med in [
         ("Keypair", avg_kp, med_kp),
@@ -41,7 +53,7 @@ if __name__ == "__main__":
     init_benchmarks_csv(out_csv=out_csv)
 
     # ---------- BENCHMARKING PROCESS BEGINS ---------- #
-    print("\n\033[92mStarting benchmarking process...\033[0m")
+    print(f"\n{_color('Starting benchmarking process...', '92')}")
 
     # Run benchmarks for each algorithm
     # Arguments: (output_csv, prefix, [algorithm id, algorithm name, NIST security level, private key size, public key size, signature size])
@@ -224,4 +236,4 @@ if __name__ == "__main__":
     run_benchmark(out_csv, 'sqisign701', ['sqisign701','SQISign 701 NIST-V','5','129','701','292'])
     """
 
-    print("\n\033[92mBenchmarking process complete. Results saved to 'results/benchmarks.csv'.\033[0m")
+    print(f"\n{_color("Benchmarking process complete. Results saved to 'results/benchmarks.csv'.", '92')}")

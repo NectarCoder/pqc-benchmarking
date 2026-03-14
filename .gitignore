@@ -16,3 +16,6 @@ __pycache__/
 
 # Benchmarking csvs
 *.csv
+
+# Logs
+*.log

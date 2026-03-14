@@ -4,10 +4,31 @@ import subprocess
 import sys
 import os
 import statistics
+from datetime import datetime
 
 #sys.path.insert(0, os.path.join(os.path.dirname(__file__), "scripts-py"))
 sys.path.insert(0, os.path.dirname(__file__))
 from extract_metrics import get_all_metrics  # type: ignore
+
+
+def _log_progress(phase, prefix, run_idx, runs):
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{ts}] [{phase}] {prefix} run {run_idx}/{runs}", flush=True)
+
+
+def _run_measurement_script(prefix, phase, run_idx, runs):
+    script_path = os.path.join(
+        os.path.dirname(os.path.dirname(__file__)),
+        "scripts",
+        f"measure_{prefix}.sh",
+    )
+    _log_progress(phase, prefix, run_idx, runs)
+    subprocess.run(
+        ["bash", script_path],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=True,
+    )
 
 
 # Function to calculate average metrics over a number of runs (default 1)
@@ -36,19 +57,14 @@ def calculate_averages(prefix, runs=1):
 
     # Run for loop how many times specified by runs
     for i in range(runs):
-        script_path = os.path.join(
-            os.path.dirname(os.path.dirname(__file__)),
-            "scripts",
-            f"measure_{prefix}.sh",
-        )
-        # os.system(f'bash "{script_path}"')
-        subprocess.run(["bash", script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+        run_idx = i + 1
+        _run_measurement_script(prefix, "AVERAGE", run_idx, runs)
 
         # Get metrics
         # Each returned list is [cpu_cycles, real_time, user_time, system_time, memrss]
         cert_metrics, csr_metrics, private_metrics, public_metrics, verify_metrics = (
             get_all_metrics(prefix)
-        )        
+        )
 
         # Accumulate keypair metrics (private + public)
         # CPU cycles
@@ -177,13 +193,8 @@ def calculate_medians(prefix, runs=1):
 
     # Run for loop how many times specified by runs
     for i in range(runs):
-        script_path = os.path.join(
-            os.path.dirname(os.path.dirname(__file__)),
-            "scripts",
-            f"measure_{prefix}.sh",
-        )
-        # os.system(f'bash "{script_path}"')
-        subprocess.run(["bash", script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+        run_idx = i + 1
+        _run_measurement_script(prefix, "MEDIAN", run_idx, runs)
         cert_metrics, csr_metrics, private_metrics, public_metrics, verify_metrics = (
             get_all_metrics(prefix)
         )

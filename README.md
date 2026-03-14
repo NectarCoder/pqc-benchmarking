@@ -189,14 +189,13 @@ You can run the benchmarks Python script like so:
 ./run_benchmarks.py
 ```
 
-If you want to run the benchmarks headless, use the `benchmarks.sh` script:  
+If you want to run the benchmarks headless, use the `run_benchmarking_headless.sh` script:  
 
 ```bash
 # From the project root:
 ./run_benchmarks_headless.sh
 # Will output:
-# - run_benchmarks.out file with stdout
-# - run_benchmarks.err file with stderr
+# - run_benchmarks.log file with combined stdout and stderr
 ```
 
 Once benchmarks are complete, results will be available in `results/benchmarks.csv`.  
