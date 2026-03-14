@@ -1,6 +1,6 @@
 # NIST 'Round 2' Additional Digital Signatures Performance Evaluation  
 
-Performance benchmarks on the fourteen 'Round 2' additional digital-signature algorithms submitted to *NIST's Post-Quantum Cryptography Round 2 — Additional Digital Signature Schemes* [^1], conducted to analyze their performance in the context of public key infrastructure (PKI).  
+Performance benchmarks on the fourteen 'Round 2' additional digital-signature algorithms submitted to *NIST's Post-Quantum Cryptography Round 2 — Additional Digital Signature Schemes* [^1], conducted to analyze their performance in the context of public key infrastructure (PKI). More specifically, we evaluate the performance of these algorithms when integrated into OpenSSL following the X.509 standard - not just the raw algorithm performance. 
 
 Jump to [Building & Benchmarking](#building--benchmarking) for instructions on how to utilize this benchmarking setup.  
 
